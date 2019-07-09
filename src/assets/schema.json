@@ -1,0 +1,100 @@
+{
+  "name": "InstrumentModel",
+  "properties": [
+    {
+      "dataType": "String",
+      "name": "name",
+      "alias": "Name",
+      "required": true,
+      "array": false,
+      "delimiter": null,
+      "minLength": 2,
+      "maxLength": 255,
+      "pattern": null,
+      "unique": null,
+      "sequence": null,
+      "isArray": false
+    },
+    {
+      "dataType": "String",
+      "name": "technologyType",
+      "alias": "Technology type",
+      "required": true,
+      "array": false,
+      "delimiter": null,
+      "minLength": null,
+      "maxLength": 255,
+      "pattern": null,
+      "unique": null,
+      "sequence": null,
+      "isArray": false
+    },
+    {
+      "dataType": "String",
+      "name": "instrumentType",
+      "alias": "Instrument type",
+      "required": true,
+      "array": false,
+      "delimiter": null,
+      "minLength": null,
+      "maxLength": 255,
+      "pattern": null,
+      "unique": null,
+      "sequence": null,
+      "isArray": false
+    },
+    {
+      "dataType": "String",
+      "name": "vendor",
+      "alias": "Vendor",
+      "required": true,
+      "array": false,
+      "delimiter": null,
+      "minLength": null,
+      "maxLength": 255,
+      "pattern": null,
+      "unique": null,
+      "sequence": null,
+      "isArray": false
+    },
+    {
+      "dataType": "String",
+      "name": "extensions",
+      "alias": "Extensions",
+      "required": true,
+      "array": true,
+      "delimiter": ",",
+      "minLength": null,
+      "maxLength": null,
+      "pattern": null,
+      "unique": null,
+      "sequence": null,
+      "isArray": true
+    },
+    {
+      "dataType": "Boolean",
+      "name": "additionalFiles",
+      "alias": "Additional files",
+      "required": false,
+      "array": false,
+      "delimiter": null,
+      "unique": null,
+      "sequence": null,
+      "isArray": false
+    },
+    {
+      "dataType": "Boolean",
+      "name": "folderArchiveSupport",
+      "alias": "Folder archive support",
+      "required": false,
+      "array": false,
+      "delimiter": null,
+      "unique": null,
+      "sequence": null,
+      "isArray": false
+    }
+  ],
+  "refs": null,
+  "primaryKey": null,
+  "foreignKeys": []
+}

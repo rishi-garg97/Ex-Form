@@ -1,0 +1,64 @@
+<div>
+  <form [formGroup]="formGroup" (ngSubmit)="login()" (ngReset)="reset()" class="ex-form">
+    <h5>Create Protocol</h5>
+    <div class="row">
+    <ng-container *ngFor="let property of schema;let i=index;">
+        <!--Form field for text input  -->
+        <div class="form-group col-sm-6" *ngIf="property.dataType=='String'">
+          <app-text-field [property]="property"
+                          [formGroup]="formGroup"></app-text-field>
+        </div>
+
+        <!--Form field for number input  -->
+      <div class="form-group col-sm-6" *ngIf="property.dataType=='Number'" style="margin-bottom:0;">
+
+        <app-number-field [formFieldControl]="formGroup.controls[property.name]"
+                          [property]="property"
+                          [formGroup]="formGroup"></app-number-field>
+      </div>
+
+      <!--Form field for enumeration-->
+
+      <div class="form-group col-sm-6" *ngIf="property.dataType=='Enumeration'"
+           style="margin-bottom:0px;">
+        <app-dropdown
+          [formFieldControl]="formGroup.controls[property.name]"
+          [property]="property"
+          [formGroup]="formGroup">
+        </app-dropdown>
+
+      </div>
+
+      <!--Form field for Measure Datatype-->
+
+      <div class="form-group col-sm-6"
+           *ngIf="property.dataType=='Measure'"
+           style="margin-bottom:0;padding-right: 0;"
+           [formGroup]="formGroup.controls[property.name]">
+
+
+        <app-measure
+          [formFieldControl]="formGroup.controls[property.name]"
+          [property]="property"
+          [formGroup]="formGroup.controls[property.name]">
+        </app-measure>
+
+      </div>
+
+    </ng-container>
+    </div>
+
+    <div>
+      <p style="font-size:13px;"><span class="asterik" style="font-size:16px;">* </span>field are mandatory</p>
+    </div>
+    <div class="btn btn-toolbar">
+
+      <button type="submit" class="btn btn-primary" [disabled]="!this.formGroup.valid">Submit</button>
+      &nbsp; &nbsp;
+
+      <button type="reset" class="btn btn-primary">Reset</button>
+    </div>
+
+  </form>
+
+</div>

@@ -1,0 +1,21 @@
+<div class="row col-sm-12" style="padding: 0;">
+  <div class="col-sm-6" [formGroup]="formGroup" style="padding-right: 0;">
+    <app-number-field
+      [formFieldControl]="formFieldControl.controls[property.name + 'Measure']"
+      [property]="newProperty.measure"
+      [formGroup]="formGroup"
+      (changeEvent)="onMeasureChange($event)">
+    </app-number-field>
+
+  </div>
+
+  <div class="col-sm-6" [formGroup]="formGroup" style="padding-right: 0;">
+
+    <app-dropdown
+      [formFieldControl]="formFieldControl.controls[property.name + 'Unit']"
+      [property]="newProperty.unit"
+      [formGroup]="formGroup">
+    </app-dropdown>
+  </div>
+
+</div>
