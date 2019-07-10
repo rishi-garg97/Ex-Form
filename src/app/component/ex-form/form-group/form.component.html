@@ -1,8 +1,8 @@
 <div>
   <form [formGroup]="formGroup" (ngSubmit)="login()" (ngReset)="reset()" class="ex-form">
-    <h5>Create Protocol</h5>
+    <h5>{{schema.name}}</h5>
     <div class="row">
-    <ng-container *ngFor="let property of schema;let i=index;">
+    <ng-container *ngFor="let property of schema.properties;let i=index;">
         <!--Form field for text input  -->
         <div class="form-group col-sm-6" *ngIf="property.dataType=='String'">
           <app-text-field [property]="property"

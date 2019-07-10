@@ -1,28 +1,42 @@
-import {Component, OnInit, DoCheck} from "@angular/core";
-import schema from "../../../../assets/schema.json";
+import {Component, OnInit, Input, OnChanges, SimpleChanges} from "@angular/core";
 import {FormGroup} from "@angular/forms";
 import {FormBuildingService} from "../form-building.service";
+
 @Component({
-  selector: "app-form-group",
+  selector: "app-form",
   templateUrl: "./form.component.html",
   styleUrls: ["./form.component.css"]
 })
-export class FormComponent implements OnInit, DoCheck {
+export class FormComponent implements OnInit, OnChanges {
   formGroup: FormGroup;
   schema: any;
+  @Input() formName;
 
     constructor(private formBuildingService: FormBuildingService) {
     }
 
-    ngOnInit() {
-      this.initialize();
-    }
-    ngDoCheck() {}
+  ngOnInit() {
+    this.initialize();
+  }
 
-    initialize = () => {
-    this.schema = this.formBuildingService.getSchema();
-    this.formGroup = this.formBuildingService.buildForm();
+  ngOnChanges(changes: SimpleChanges) {
+    for (const propName in changes) {
+      const chng = changes[propName];
+      const cur = JSON.stringify(chng.currentValue);
+      const prev = JSON.stringify(chng.previousValue);
+      if (cur !== prev) {
+        this.initialize();
+      }
     }
+  }
+  // ngDoCheck() {
+  //    this.initialize();
+  // }
+
+  initialize = () => {
+    this.schema = this.formBuildingService.getSchema(this.formName);
+    this.formGroup = this.formBuildingService.buildForm();
+  }
 
     login = () => {
       console.log(this.formGroup.getRawValue());

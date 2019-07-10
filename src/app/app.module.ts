@@ -12,7 +12,8 @@ import { TextFieldComponent } from "./component/ex-form/text-field/text-field.co
 import { NumberFieldComponent } from "./component/ex-form/number-field/number-field.component";
 import { DropdownComponent } from "./component/ex-form/dropdown/dropdown.component";
 import { MeasureComponent } from "./component/ex-form/measure/measure.component";
-import { ProtocolComponent } from "./component/protocol/protocol.component";
+import { DashboardComponent } from "./component/ex-form/dashboard/dashboard.component";
+import { AppRoutingModule } from "./app-routing.module";
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,13 +23,14 @@ import { ProtocolComponent } from "./component/protocol/protocol.component";
     NumberFieldComponent,
     DropdownComponent,
     MeasureComponent,
-    ProtocolComponent
+    DashboardComponent
   ],
   imports: [
     FormsModule,
     AngularMaterialModule,
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+    AppRoutingModule,
   ],
   providers: [ValidationServiceService],
   bootstrap: [AppComponent]
