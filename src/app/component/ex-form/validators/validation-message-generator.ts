@@ -6,6 +6,8 @@ export class ValidationMessageGenerator {
     const control = formGroup.get(property.name);
     if (control.hasError("required")) {
       msg = "This Field is required";
+    } else if (control.hasError("pattern") && property.name === "mobileNo") {
+      msg = "Please Enter Valid Mobile Number";
     } else if (control.hasError("pattern")) {
       msg = "This field contain only character value.";
     } else if (control.hasError("minlength")) {
@@ -16,6 +18,8 @@ export class ValidationMessageGenerator {
       msg = "This field required minimum value " + control.errors.min.min;
     } else if (control.hasError("max")) {
       msg = "This field has maximum value " + control.errors.max.max;
+    } else if (control.hasError("email")) {
+      msg = "Enter Valid Email Address " ;
     }
     return msg;
 

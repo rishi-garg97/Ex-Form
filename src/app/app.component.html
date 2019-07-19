@@ -1,13 +1,37 @@
-<nav class="navbar fixed-top navbar-dark bg-dark"
-     style="color: white;">
+<!--<nav class="navbar fixed-top navbar-dark bg-dark"-->
+     <!--style="color: white;">-->
 
-  <a class="navbar-brand">Angular Form</a>
-</nav>
+  <!--<a class="navbar-brand">Angular Form</a>-->
 
-<div style="margin-top:60px;">
+<!--</nav>-->
+<app-tool-bar></app-tool-bar>
 
+<div style="margin-top: 56px;">
+
+  <router-outlet></router-outlet>
+
+  <!--<app-login></app-login>-->
 
    <!--<app-json-form></app-json-form>-->
-   <app-dashboard></app-dashboard>
+   <!--<app-dashboard></app-dashboard>-->
+
+
+
+
+  <div id="loaderModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="loader-dialog modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content" style="background-color: unset; border: unset;">
+        <div class="modal-body">
+          <!--<img class="loader-gif" src="./assets/images/loader.gif" alt="loader" />-->
+          <app-loading-spinner></app-loading-spinner>
+        </div>
+      </div>
+    </div>
+  </div>
 
  </div>
+
+
+
+<!--<app-loading-spinner *ngIf="commonService.isSpinnerVisible"></app-loading-spinner>-->
+

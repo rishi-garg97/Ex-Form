@@ -1,0 +1,165 @@
+{
+  "name": "Sign Up",
+  "steps":[
+    {
+      "index": 1,
+      "name":"generalDetails",
+      "label":"General Details",
+      "description": "Little description",
+      "enable":true,
+      "properties": [
+        {
+          "dataType": "String",
+          "name": "firstName",
+          "alias": "First Name",
+          "required": true,
+          "array": false,
+          "delimiter": null,
+          "minLength": null,
+          "maxLength": null,
+          "pattern": "^[a-zA-Z]+$",
+          "unique": null,
+          "sequence": null,
+          "isArray": false
+        },
+        {
+          "dataType": "String",
+          "name": "lastName",
+          "alias": "Last Name",
+          "required": true,
+          "array": false,
+          "delimiter": null,
+          "minLength": null,
+          "maxLength": null,
+          "pattern": "^[a-zA-Z]+$",
+          "unique": null,
+          "sequence": null,
+          "isArray": false
+        },
+        {
+          "dataType": "Number",
+          "name": "mobileNo",
+          "alias": "Mobile No",
+          "required": true,
+          "array": false,
+          "delimiter": null,
+          "minLength": 10,
+          "maxLength": 10,
+          "pattern": "[1-9]{1}[0-9]{9}",
+          "unique": null,
+          "sequence": null,
+          "isArray": false
+        },
+        {
+          "dataType": "Email",
+          "name": "email",
+          "alias": "Email",
+          "required": true,
+          "array": false,
+          "delimiter": null,
+          "minLength": null,
+          "maxLength": 255,
+          "pattern": null,
+          "unique": null,
+          "sequence": null,
+          "isArray": false
+        },
+        {
+          "dataType": "Password",
+          "name": "password",
+          "alias": "Password",
+          "required": true,
+          "array": false,
+          "delimiter": null,
+          "minLength": null,
+          "maxLength": 255,
+          "pattern": null,
+          "unique": null,
+          "sequence": null,
+          "isArray": false
+        }
+      ]
+    }
+  ],
+  "properties": [
+    {
+      "dataType": "String",
+      "name": "firstName",
+      "alias": "First Name",
+      "required": true,
+      "array": false,
+      "delimiter": null,
+      "minLength": null,
+      "maxLength": null,
+      "pattern": "^[a-zA-Z]+$",
+      "unique": null,
+      "sequence": null,
+      "isArray": false
+    },
+    {
+      "dataType": "String",
+      "name": "lastName",
+      "alias": "Last Name",
+      "required": true,
+      "array": false,
+      "delimiter": null,
+      "minLength": null,
+      "maxLength": null,
+      "pattern": "^[a-zA-Z]+$",
+      "unique": null,
+      "sequence": null,
+      "isArray": false
+    },
+    {
+      "dataType": "Number",
+      "name": "mobileNo",
+      "alias": "Mobile No",
+      "required": true,
+      "array": false,
+      "delimiter": null,
+      "minLength": 10,
+      "maxLength": 10,
+      "pattern": "[1-9]{1}[0-9]{9}",
+      "unique": null,
+      "sequence": null,
+      "isArray": false
+    },
+    {
+      "dataType": "Email",
+      "name": "email",
+      "alias": "Email",
+      "required": true,
+      "array": false,
+      "delimiter": null,
+      "minLength": null,
+      "maxLength": 255,
+      "pattern": null,
+      "unique": null,
+      "sequence": null,
+      "isArray": false
+    },
+    {
+      "dataType": "Password",
+      "name": "password",
+      "alias": "Password",
+      "required": true,
+      "array": false,
+      "delimiter": null,
+      "minLength": null,
+      "maxLength": 255,
+      "pattern": null,
+      "unique": null,
+      "sequence": null,
+      "isArray": false
+    }
+  ],
+  "refs": null,
+  "primaryKey": null,
+  "foreignKeys": [
+    {
+      "sourceField": "",
+      "targetField": "",
+      "targetEntity": ""
+    }
+  ]
+}

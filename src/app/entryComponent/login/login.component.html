@@ -1,0 +1,63 @@
+<div class="main">
+  <h2 mat-dialog-title>Login</h2>
+
+  <mat-dialog-content>
+    <form class="example-form" [formGroup]="formGroup">
+
+      <div class="col-sm-12" style="padding: 0;margin-top:7px">
+
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Email" formControlName="email" required>
+          <mat-error *ngIf="formGroup.controls['email'].invalid">{{getError("email")}}</mat-error>
+
+        </mat-form-field>
+
+      </div>
+      <div class="col-sm-12" style="padding: 0;margin-top:7px">
+
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput  type="password" placeholder="Password" formControlName="password" required>
+          <mat-error *ngIf="formGroup.controls['password'].invalid">{{getError("password")}}</mat-error>
+
+        </mat-form-field>
+      </div>
+
+
+
+
+    </form>
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+
+      <div class="googleLogin" style="width:100%">
+        <button mat-raised-button color="warn" (click)="login('google')" style="width:100%">
+          <span><i class="fab fa-google-plus-g"></i>&nbsp;&nbsp;Log in with Google</span>
+        </button>
+
+
+
+      </div>
+
+    <div class="login-actions col-sm-12 row">
+      <div class="col-sm-6">
+        <button mat-raised-button color="primary" (click)="login('email')" [disabled]="this.formGroup.invalid">Login</button>
+
+      </div>
+      <div class="col-sm-6">
+        <button mat-raised-button (click)="cancel()">Cancel</button>
+
+      </div>
+
+    </div>
+
+    <!--<button type="button" class="btn googleBtn" (click)="authService.GoogleAuth()">-->
+      <!--<i class="fab fa-google-plus-g"></i>-->
+      <!--Log in with Google-->
+    <!--</button>-->
+  </mat-dialog-actions>
+
+</div>

@@ -35,7 +35,7 @@ export class FormComponent implements OnInit, OnChanges {
 
   initialize = () => {
     this.schema = this.formBuildingService.getSchema(this.formName);
-    this.formGroup = this.formBuildingService.buildForm();
+    this.formGroup = this.formBuildingService.buildForm(this.schema);
   }
 
     login = () => {

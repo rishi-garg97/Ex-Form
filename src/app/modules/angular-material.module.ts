@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import {MatButtonModule, MatIconModule, MatCheckboxModule, MatNativeDateModule, MatFormFieldModule, MatDatepickerModule,
-        MatOptionModule, MatSelectModule, MatInputModule, MatCardModule, MatToolbarModule, MatGridListModule } from "@angular/material";
+        MatOptionModule, MatSelectModule, MatInputModule, MatCardModule, MatToolbarModule, MatGridListModule,
+        MatProgressSpinnerModule } from "@angular/material";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { BrowserModule } from "@angular/platform-browser";
 
@@ -20,6 +21,7 @@ import { BrowserModule } from "@angular/platform-browser";
      MatSelectModule,
      MatCardModule,
      MatToolbarModule,
+    MatProgressSpinnerModule,
     MatGridListModule],
   exports: [
     BrowserModule,
@@ -35,7 +37,8 @@ import { BrowserModule } from "@angular/platform-browser";
      MatSelectModule,
      MatCardModule,
      MatToolbarModule,
-     MatGridListModule
+     MatGridListModule,
+    MatProgressSpinnerModule
   ]
 })
 export class AngularMaterialModule { }

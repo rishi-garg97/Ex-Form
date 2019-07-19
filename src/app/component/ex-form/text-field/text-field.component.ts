@@ -1,6 +1,5 @@
 import {Component, OnInit, Input} from "@angular/core";
 import {FormBuildingService} from "../form-building.service";
-import {Validators} from "@angular/forms";
 import {ValidationMessageGenerator} from "../validators/validation-message-generator";
 import {RequiredValidator} from "../validators/required-validator";
 import {MinLengthValidator} from "../validators/min-length-validators";

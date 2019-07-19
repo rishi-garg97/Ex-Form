@@ -5,6 +5,9 @@ import {ValidationMessageGenerator} from "../validators/validation-message-gener
 import {RequiredValidator} from "../validators/required-validator";
 import {MaxValueValidator} from "../validators/max-value-validator";
 import {MinValueValidator} from "../validators/min-value-validator";
+import {MinLengthValidator} from "../validators/min-length-validators";
+import {MaxLengthValidator} from "../validators/max-length-validator";
+import {PatternValidator} from "../validators/pattern-validator";
 @Component({
   selector: "app-number-field",
   templateUrl: "./number-field.component.html",
@@ -20,7 +23,7 @@ export class NumberFieldComponent implements OnInit {
 
   ngOnInit() {
 
-     this.addValidator();
+    this.addValidator();
 
   }
 
@@ -44,12 +47,17 @@ export class NumberFieldComponent implements OnInit {
         if (this.property.max && this.property.min != null ) {
           validators.push(new MinValueValidator().get(this.property.min));
         }
+        if (this.property.pattern && this.property.pattern != null) {
+          validators.push(new PatternValidator().get(this.property.pattern));
+        }
         this.formGroup.controls[this.property.name].setValidators(validators);
+
   }
 
 
   getError = () => {
-   return ValidationMessageGenerator.errorMessage(this.formGroup, this.property);
+    // console.log(ValidationMessageGenerator.errorMessage(this.formGroup, this.property));
+    return ValidationMessageGenerator.errorMessage(this.formGroup, this.property);
   }
 
   fieldValueChanged = () => {

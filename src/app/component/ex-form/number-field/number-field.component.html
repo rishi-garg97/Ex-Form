@@ -15,13 +15,13 @@
     <!--placeholder={{property.alias}}>-->
 
 
-    <input
+    <input  matInput
       type="number"
       [attr.min] = "property.min ? null : property.min"
       [attr.max] = "property.max ? null : property.max"
       formControlName={{property.name}}
       placeholder={{property.alias}}
-      (change)="fieldValueChanged()" matInput>
+      (change)="fieldValueChanged()">
 
     <mat-error *ngIf="formGroup.controls[property.name].invalid">
       {{getError()}}

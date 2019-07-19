@@ -17,8 +17,7 @@ export class FormBuildingService {
 
   getSchema = (name) => {
     const schema = [...SchemaJson];
-    console.log(schema);
-    // const schema = await Promise.resolve(SchemaJson);
+      // const schema = await Promise.resolve(SchemaJson);
     // const properties = "properties";
     const entitySchema = _.find(schema, (formSchema) => {
       if (formSchema.name === name) {
@@ -48,10 +47,10 @@ export class FormBuildingService {
   }
 
 
-  buildForm = () => {
+  buildForm = (schema) => {
     const allControl = {};
 
-    this.schema.properties.forEach((property) => {
+    schema.properties.forEach((property) => {
 
       if (property.dataType === "Measure") {
         const measureGroup = {};
