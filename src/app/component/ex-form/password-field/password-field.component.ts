@@ -1,9 +1,10 @@
-import {Component, Input, OnInit} from "@angular/core";
+import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
 import {RequiredValidator} from "../validators/required-validator";
 import {MaxLengthValidator} from "../validators/max-length-validator";
 import {PatternValidator} from "../validators/pattern-validator";
 import {MinLengthValidator} from "../validators/min-length-validators";
 import {ValidationMessageGenerator} from "../validators/validation-message-generator";
+import {FormBuilder, FormGroup} from "@angular/forms";
 
 @Component({
   selector: "app-password-field",
@@ -12,10 +13,11 @@ import {ValidationMessageGenerator} from "../validators/validation-message-gener
 })
 export class PasswordFieldComponent implements OnInit {
 
-
-  @Input() formGroup;
+  formGroup: FormGroup;
   @Input() property;
-  constructor() { }
+  @Output() public addControl = new EventEmitter();
+
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.addValidator();
@@ -35,10 +37,11 @@ export class PasswordFieldComponent implements OnInit {
       validators.push(new MaxLengthValidator().get(this.property.maxLength));
     }
     if (this.property.pattern && this.property.pattern != null) {
-      console.log(this.property.pattern)
       validators.push(new PatternValidator().get(this.property.pattern));
     }
-    this.formGroup.controls[this.property.name].setValidators(validators);
+
+    this.formGroup = this.formBuilder.group({ [this.property.name] : ["", validators] });
+    this.addControl.emit({key: this.property.name , value: this.formGroup});
   }
 
   getError = () => {

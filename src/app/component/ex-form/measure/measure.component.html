@@ -1,21 +1,23 @@
 <div class="row col-sm-12" style="padding: 0;">
   <div class="col-sm-6" [formGroup]="formGroup" style="padding-right: 0;">
     <app-number-field
-      [formFieldControl]="formFieldControl.controls[property.name + 'Measure']"
       [property]="newProperty.measure"
-      [formGroup]="formGroup"
-      (changeEvent)="onMeasureChange($event)">
+      (addControl)= "addMeasureControl($event)" >
     </app-number-field>
-
   </div>
 
   <div class="col-sm-6" [formGroup]="formGroup" style="padding-right: 0;">
 
     <app-dropdown
-      [formFieldControl]="formFieldControl.controls[property.name + 'Unit']"
       [property]="newProperty.unit"
-      [formGroup]="formGroup">
+      (addControl)="addMeasureControl($event)" >
     </app-dropdown>
   </div>
 
 </div>
+
+<!--[formFieldControl]="formFieldControl.controls[property.name + 'Measure']"-->
+<!--[formFieldControl]="formFieldControl.controls[property.name + 'Unit']"-->
+<!--<app-number-field [property]="property"-->
+                  <!--(addControl)= "addControl($event)" >-->
+<!--</app-number-field>-->

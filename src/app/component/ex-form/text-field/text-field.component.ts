@@ -1,10 +1,12 @@
-import {Component, OnInit, Input} from "@angular/core";
-import {FormBuildingService} from "../form-building.service";
+import {
+  Component, OnInit, Input, Output, EventEmitter
+} from "@angular/core";
 import {ValidationMessageGenerator} from "../validators/validation-message-generator";
 import {RequiredValidator} from "../validators/required-validator";
 import {MinLengthValidator} from "../validators/min-length-validators";
 import {MaxLengthValidator} from "../validators/max-length-validator";
 import {PatternValidator} from "../validators/pattern-validator";
+import {FormBuilder, FormGroup} from "@angular/forms";
 
 @Component({
   selector: "app-text-field",
@@ -13,26 +15,17 @@ import {PatternValidator} from "../validators/pattern-validator";
 })
 export class TextFieldComponent implements OnInit {
 
-
-  @Input() formGroup;
+  formGroup: FormGroup;
   @Input() property;
+  @Output() public addControl = new EventEmitter();
 
-  constructor(private formBuildingService: FormBuildingService ) { }
-
+  constructor(private formBuilder: FormBuilder ) {}
 
   ngOnInit() {
     this.addValidator();
   }
-  //
-  // ngAfterViewInit() {
-  //
-  //   setTimeout(() => {
-  //     this.addValidator();
-  //
-  //   }, 100);
-  // }
+
     addValidator = () => {
-      // validators.push(new RequiredValidator());
 
           const validators = [];
           if (this.property.required) {
@@ -47,7 +40,9 @@ export class TextFieldComponent implements OnInit {
           if (this.property.pattern && this.property.pattern != null) {
             validators.push(new PatternValidator().get(this.property.pattern));
           }
-          this.formGroup.controls[this.property.name].setValidators(validators);
+
+          this.formGroup = this.formBuilder.group({ [this.property.name] : ["", validators] });
+          this.addControl.emit({key: this.property.name , value: this.formGroup});
     }
 
     getError = () => {

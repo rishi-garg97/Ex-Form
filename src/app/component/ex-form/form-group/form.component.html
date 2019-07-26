@@ -6,41 +6,44 @@
         <!--Form field for text input  -->
         <div class="form-group col-sm-6" *ngIf="property.dataType=='String'">
           <app-text-field [property]="property"
-                          [formGroup]="formGroup"></app-text-field>
+                          (addControl)= "addControl($event)" >
+          </app-text-field>
         </div>
 
+      <!--[formFieldControl]="formGroup.controls[property.name]"-->
+      <!--[formGroup]="formGroup">-->
+
         <!--Form field for number input  -->
-      <div class="form-group col-sm-6" *ngIf="property.dataType=='Number'" style="margin-bottom:0;">
+         <div class="form-group col-sm-6" *ngIf="property.dataType=='Number'" style="margin-bottom:0;">
 
-        <app-number-field [formFieldControl]="formGroup.controls[property.name]"
-                          [property]="property"
-                          [formGroup]="formGroup"></app-number-field>
-      </div>
+           <app-number-field [property]="property"
+                             (addControl)= "addControl($event)" >
+           </app-number-field>
 
+         </div>
       <!--Form field for enumeration-->
 
       <div class="form-group col-sm-6" *ngIf="property.dataType=='Enumeration'"
            style="margin-bottom:0px;">
-        <app-dropdown
-          [formFieldControl]="formGroup.controls[property.name]"
-          [property]="property"
-          [formGroup]="formGroup">
+        <app-dropdown [property]="property"
+                      (addControl)= "addControl($event)" >
         </app-dropdown>
 
       </div>
 
-      <!--Form field for Measure Datatype-->
+      <!--&lt;!&ndash;Form field for Measure Datatype&ndash;&gt;-->
+      <!--[formGroup]="formGroup.controls[property.name]">-->
+      <!--[formFieldControl]="formGroup.controls[property.name]"-->
 
       <div class="form-group col-sm-6"
            *ngIf="property.dataType=='Measure'"
-           style="margin-bottom:0;padding-right: 0;"
-           [formGroup]="formGroup.controls[property.name]">
+           style="margin-bottom:0;
+                    padding-right:0;">
 
 
         <app-measure
-          [formFieldControl]="formGroup.controls[property.name]"
           [property]="property"
-          [formGroup]="formGroup.controls[property.name]">
+          (addControl)= "addControl($event)" >
         </app-measure>
 
       </div>
@@ -53,7 +56,7 @@
     </div>
     <div class="btn btn-toolbar">
 
-      <button type="submit" class="btn btn-primary" [disabled]="!this.formGroup.valid">Submit</button>
+      <button type="submit" class="btn btn-primary" [disabled]="!formGroup.valid">Submit</button>
       &nbsp; &nbsp;
 
       <button type="reset" class="btn btn-primary">Reset</button>

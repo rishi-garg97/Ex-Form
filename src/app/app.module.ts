@@ -16,7 +16,7 @@ import { DashboardComponent } from "./component/ex-form/dashboard/dashboard.comp
 import { AppRoutingModule } from "./app-routing.module";
 import { LoginComponent } from "./entryComponent/login/login.component";
 import { ToolBarComponent } from "./header/tool-bar/tool-bar.component";
-import {MatDialogModule} from "@angular/material";
+import { MatDialogModule} from "@angular/material";
 import { SignupComponent } from "./entryComponent/signup/signup.component";
 import { EmailFieldComponent } from "./component/ex-form/email-field/email-field.component";
 import { PasswordFieldComponent } from "./component/ex-form/password-field/password-field.component";
@@ -35,6 +35,7 @@ import { AngularFireDatabaseModule } from "@angular/fire/database";
 import {AuthService} from "./entryComponent/services/auth.service";
 import { LoadingSpinnerComponent } from "./loading-spinner/loading-spinner.component";
 import {CommonService} from "./service/common.service";
+import { StepFormComponent } from "./component/ex-form/step-form/step-form.component";
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import {CommonService} from "./service/common.service";
     SignupComponent,
     EmailFieldComponent,
     PasswordFieldComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    StepFormComponent
   ],
   imports: [
     FormsModule,
@@ -63,10 +65,11 @@ import {CommonService} from "./service/common.service";
     MatDialogModule,
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireAuthModule, // Only required for auth features,
+    AngularFireModule, // Only required for auth features,
     AngularFirestoreModule,
     MatSnackBarModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
 
   ],
   entryComponents: [

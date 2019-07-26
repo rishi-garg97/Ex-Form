@@ -5,11 +5,9 @@
   <span class="example-fill-remaining-space"></span>
 
   <!-- login Button -->
-  <!--<a (click)="loginDialog()">Login</a>-->
   <button mat-button (click)="openLoginDialog()" *ngIf="!authService.isLoggedIn">Login</button>
   <button mat-button (click)="openSignupDialog()" *ngIf="!authService.isLoggedIn">Sign Up</button>
   <button mat-button (click)="authService.SignOut()" *ngIf="authService.isLoggedIn">Logout</button>
 
-  <!--<button mat-raised-button (click)="openLoginDialog()">Login</button>-->
 
 </mat-toolbar>

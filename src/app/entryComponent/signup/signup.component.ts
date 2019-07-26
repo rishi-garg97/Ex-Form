@@ -1,19 +1,19 @@
 import {Component, Inject, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup} from "@angular/forms";
 import {FormBuildingService} from "../../component/ex-form/form-building.service";
 import signup from "../../../assets/signup.json";
-import { AuthService } from "../services/auth.service";
-import { CommonService} from "../../service/common.service";
-import { SnackBarMessageService } from "../../service/snack-bar-message.service";
+import {AuthService} from "../services/auth.service";
+import {CommonService} from "../../service/common.service";
+import {SnackBarMessageService} from "../../service/snack-bar-message.service";
 @Component({
   selector: "app-signup",
   templateUrl: "./signup.component.html",
   styleUrls: ["./signup.component.css"]
 })
 export class SignupComponent implements OnInit {
-  private formGroup: FormGroup;
+  formGroup: FormGroup = this.formBuilder.group({});
   private schema: any =  signup;
 
   constructor(private router: Router, public dialogRef: MatDialogRef<SignupComponent>, @Inject(MAT_DIALOG_DATA)public data: any,
@@ -22,14 +22,12 @@ export class SignupComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.formGroup = this.formBuildingService.buildForm(this.schema);
-//    console.log(this.formGroup);
   }
   signup = async () => {
 
     this.commonService.showHideSpinner(true);
     try {
-      await this.authService.SignUp(this.formGroup.controls["email"].value, this.formGroup.controls["password"].value);
+      await this.authService.SignUp(this.formGroup.controls["email"].value["email"], this.formGroup.controls["password"].value["password"]);
   //    console.log(user);
       this.authService.sendVerificationMail();
       this.commonService.showHideSpinner(false);
@@ -68,6 +66,12 @@ export class SignupComponent implements OnInit {
 
     return "error";
   }
+
+  addControl = (data) => {
+    this.formGroup.addControl(data.key, data.value);
+    this.formGroup.updateValueAndValidity();
+  }
+
 }
 
 

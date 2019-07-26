@@ -7,27 +7,30 @@
           <!--Form field for text input  -->
           <div class="form-group" *ngIf="property.dataType=='String'">
             <app-text-field [property]="property"
-                            [formGroup]="formGroup"></app-text-field>
+                            (addControl)= "addControl($event)" >
+            </app-text-field>
           </div>
 
           <!--Form field for number input  -->
           <div class="form-group" *ngIf="property.dataType=='Number'" style="margin-bottom:0;">
 
-            <app-number-field [formFieldControl]="formGroup.controls[property.name]"
-                              [property]="property"
-                              [formGroup]="formGroup"></app-number-field>
+            <app-number-field [property]="property"
+                              (addControl)= "addControl($event)" >
+            </app-number-field>
           </div>
 
           <div class="form-group" *ngIf="property.dataType=='Email'" style="margin-bottom:0;">
 
             <app-email-field  [property]="property"
-                              [formGroup]="formGroup"></app-email-field>
+                              (addControl)= "addControl($event)" >
+            </app-email-field>
           </div>
 
           <div class="form-group" *ngIf="property.dataType=='Password'" style="margin-bottom:0;">
 
             <app-password-field  [property]="property"
-                                 [formGroup]="formGroup"></app-password-field>
+                                 (addControl)= "addControl($event)" >
+            </app-password-field>
           </div>
 
         </ng-container>
@@ -36,7 +39,7 @@
     </form>
   </mat-dialog-content>
   <mat-dialog-actions>
-    <button mat-button (click)="signup()" [disabled]="!this.formGroup.valid" color="primary">Sign Up</button>
+    <button mat-button (click)="signup()" [disabled]="!formGroup.valid" color="primary">Sign Up</button>
     <button mat-button (click)="cancel()" color="primary">Cancel</button>
 
   </mat-dialog-actions>

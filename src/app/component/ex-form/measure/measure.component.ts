@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from "@angular/core";
-import {FormGroup, FormControl} from "@angular/forms";
+import {Component, OnInit, Input, Output, EventEmitter} from "@angular/core";
+import {FormGroup, FormControl, FormBuilder} from "@angular/forms";
 
 @Component({
   selector: "app-measure",
@@ -7,20 +7,21 @@ import {FormGroup, FormControl} from "@angular/forms";
   styleUrls: ["./measure.component.css"]
 })
 export class MeasureComponent implements OnInit {
-  @Input() formGroup: FormGroup;
-  @Input() formFieldControl: FormControl;
-  @Input() property: {};
+  formGroup: FormGroup = this.formBuilder.group({});
+  @Input() property;
+  @Output() public addControl = new EventEmitter();
 
   newProperty: any = {
     measure: {}, unit: {}
   };
-  constructor() { }
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.newProperty.measure = {...this.property};
     this.newProperty.measure.name += "Measure";
     this.newProperty.unit = {...this.property};
     this.newProperty.unit.name += "Unit";
+
   }
 
   onMeasureChange = (measureValue) => {
@@ -34,7 +35,13 @@ export class MeasureComponent implements OnInit {
       }
       control.disable();
     }
-//    measureValue ? control.enable() : control.disable();
+  }
+
+    addMeasureControl = (data) => {
+    this.formGroup.addControl(data.key, data.value);
+    this.formGroup.updateValueAndValidity();
+    this.addControl.emit({key: this.property.name , value: this.formGroup});
+
   }
 
 

@@ -6,22 +6,13 @@
       <span *ngIf="property.required" class="asterik">*</span>
     </mat-label>
 
-    <!--<input matInput-->
-    <!--*ngIf = "property.dataType === 'Measure'"-->
-    <!--min={{property.min}}-->
-    <!--max={{property.max}}-->
-    <!--formControlName="measureinput"-->
-    <!--type="number"-->
-    <!--placeholder={{property.alias}}>-->
-
-
-    <input  matInput
-      type="number"
-      [attr.min] = "property.min ? null : property.min"
-      [attr.max] = "property.max ? null : property.max"
-      formControlName={{property.name}}
-      placeholder={{property.alias}}
-      (change)="fieldValueChanged()">
+      <input  matInput
+              formControlName={{property.name}}
+              type="number"
+              [attr.min] = "property.min ? null : property.min"
+              [attr.max] = "property.max ? null : property.max"
+              placeholder={{property.alias}}>
+    <!--(change)="fieldValueChanged()">-->
 
     <mat-error *ngIf="formGroup.controls[property.name].invalid">
       {{getError()}}

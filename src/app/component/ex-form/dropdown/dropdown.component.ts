@@ -1,5 +1,5 @@
-import {Component, OnInit, Input } from "@angular/core";
-import {FormGroup, FormControl, Validators} from "@angular/forms";
+import {Component, OnInit, Input, Output, EventEmitter} from "@angular/core";
+import {FormGroup, FormControl, Validators, FormBuilder} from "@angular/forms";
 import {ValidationMessageGenerator} from "../validators/validation-message-generator";
 import {RequiredValidator} from "../validators/required-validator";
 import set = Reflect.set;
@@ -9,34 +9,41 @@ import set = Reflect.set;
   styleUrls: ["./dropdown.component.css"]
 })
 export class DropdownComponent implements OnInit {
-  @Input() formGroup: FormGroup;
-  @Input() formFieldControl: FormControl;
+  formGroup: FormGroup;
   @Input() property;
-  constructor() { }
+  @Output() public addControl = new EventEmitter();
+
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.addValidator();
   }
-  //
-  // ngAfterViewInit() {
-  //
-  //   setTimeout(() => {
-  //     this.addValidator();
-  //
-  //   }, 100);
-  // }
-
-    addValidator() {
+      addValidator() {
 
           const validators = [];
-          const setUnitValue = this.formGroup.controls[this.property.name];
+          let dropDowninitialValue = "";
+          let dropwDownDisable = false;
+
           if (this.property.required ) {
             validators.push(new RequiredValidator().get());
           }
-          this.formGroup.controls[this.property.name].setValidators(validators);
+          // const setUnitValue = this.formGroup.controls[this.property.name];
+
           if (this.property.values && this.property.values.length === 1 ) {
-            setUnitValue.setValue(this.property.values[0]);
+            // setUnitValue.setValue(this.property.values[0]);
+            dropDowninitialValue = this.property.values[0];
+            dropwDownDisable = true;
           }
+
+
+          this.formGroup = this.formBuilder.group(
+                           { [this.property.name] : {value: dropDowninitialValue, disabled: dropwDownDisable}, validators }
+                           );
+
+
+        // this.formGroup = this.formBuilder.group({ [this.property.name] : [dropDowninitialValue, validators] });
+
+        this.addControl.emit({key: this.property.name , value: this.formGroup});
 
     }
     getError = () => {

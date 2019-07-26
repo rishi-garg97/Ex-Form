@@ -1,6 +1,6 @@
-import {Component, Input, OnInit} from "@angular/core";
+import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
 import {RequiredValidator} from "../validators/required-validator";
-import {Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ValidationMessageGenerator} from "../validators/validation-message-generator";
 
 @Component({
@@ -9,26 +9,26 @@ import {ValidationMessageGenerator} from "../validators/validation-message-gener
   styleUrls: ["./email-field.component.css"]
 })
 export class EmailFieldComponent implements OnInit {
-
-
-  @Input() formGroup;
+  formGroup: FormGroup;
   @Input() property;
+  @Output() public addControl = new EventEmitter();
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.addValidator();
   }
 
   addValidator = () => {
-    // validators.push(new RequiredValidator());
 
     const validators = [];
     if (this.property.required) {
       validators.push(new RequiredValidator().get());
     }
     validators.push(Validators.email);
-    this.formGroup.controls[this.property.name].setValidators(validators);
+
+    this.formGroup = this.formBuilder.group({ [this.property.name] : ["", validators] });
+    this.addControl.emit({key: this.property.name , value: this.formGroup});
   }
 
   getError = () => {

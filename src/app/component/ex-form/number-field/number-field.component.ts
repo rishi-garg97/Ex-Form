@@ -1,12 +1,10 @@
 import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
 import {FormBuildingService} from "../form-building.service";
-import {Validators} from "@angular/forms";
+import {FormBuilder, FormGroup } from "@angular/forms";
 import {ValidationMessageGenerator} from "../validators/validation-message-generator";
 import {RequiredValidator} from "../validators/required-validator";
 import {MaxValueValidator} from "../validators/max-value-validator";
 import {MinValueValidator} from "../validators/min-value-validator";
-import {MinLengthValidator} from "../validators/min-length-validators";
-import {MaxLengthValidator} from "../validators/max-length-validator";
 import {PatternValidator} from "../validators/pattern-validator";
 @Component({
   selector: "app-number-field",
@@ -14,27 +12,16 @@ import {PatternValidator} from "../validators/pattern-validator";
   styleUrls: ["./number-field.component.css"]
 })
 export class NumberFieldComponent implements OnInit {
-  @Input() formGroup;
-  @Input() formFieldControl;
+  formGroup: FormGroup;
   @Input() property;
-  @Output() changeEvent = new EventEmitter();
+  @Output() public addControl = new EventEmitter();
 
-  constructor(private formService: FormBuildingService) { }
+  constructor(private formService: FormBuildingService, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-
     this.addValidator();
-
   }
 
-  //
-  // ngAfterViewInit() {
-  //
-  //   setTimeout(() => {
-  //     this.addValidator();
-  //
-  //   }, 100);
-  // }
   addValidator = () => {
 
         const validators = [];
@@ -50,18 +37,18 @@ export class NumberFieldComponent implements OnInit {
         if (this.property.pattern && this.property.pattern != null) {
           validators.push(new PatternValidator().get(this.property.pattern));
         }
-        this.formGroup.controls[this.property.name].setValidators(validators);
+        this.formGroup = this.formBuilder.group({ [this.property.name] : ["", validators] });
+        this.addControl.emit({key: this.property.name , value: this.formGroup});
 
   }
 
 
   getError = () => {
-    // console.log(ValidationMessageGenerator.errorMessage(this.formGroup, this.property));
     return ValidationMessageGenerator.errorMessage(this.formGroup, this.property);
   }
 
-  fieldValueChanged = () => {
-    this.changeEvent.emit(this.formFieldControl.value);
-  }
+  // fieldValueChanged = () => {
+  //   this.changeEvent.emit(this.formFieldControl.value);
+  // }
 
 }
