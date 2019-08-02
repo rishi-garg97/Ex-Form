@@ -2,6 +2,7 @@
   "name": "Sign Up",
   "properties": [
     {
+      "enable" : true,
       "dataType": "String",
       "name": "firstName",
       "alias": "First Name",
@@ -16,6 +17,7 @@
       "isArray": false
     },
     {
+      "enable" : true,
       "dataType": "String",
       "name": "lastName",
       "alias": "Last Name",
@@ -30,6 +32,7 @@
       "isArray": false
     },
     {
+      "enable" : true,
       "dataType": "Number",
       "name": "mobileNo",
       "alias": "Mobile No",
@@ -44,6 +47,7 @@
       "isArray": false
     },
     {
+      "enable" : true,
       "dataType": "Email",
       "name": "email",
       "alias": "Email",
@@ -58,6 +62,7 @@
       "isArray": false
     },
     {
+      "enable" : true,
       "dataType": "Password",
       "name": "password",
       "alias": "Password",

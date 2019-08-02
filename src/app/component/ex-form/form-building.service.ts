@@ -1,6 +1,7 @@
 import {Injectable} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import SchemaJson from "../../../assets/schema.json";
+import UISchema from "../../../assets/ui-schema.json";
 import _ from "lodash";
 
 @Injectable({
@@ -12,6 +13,8 @@ export class FormBuildingService {
   schema: any;
 
   constructor(private formBuilder: FormBuilder) { }
+
+
 
   getSchema = (name) => {
 

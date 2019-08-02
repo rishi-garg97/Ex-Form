@@ -1,0 +1,25 @@
+<div style="margin:15px 20%;">
+  <div>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Entity</mat-label>
+      <mat-select [(value)]="selected" (selectionChange)="reinitialize()">
+        <mat-option *ngFor="let opt of entity" [value]="opt.name">
+          {{opt.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </div>
+  <div>
+
+  </div>
+
+</div>
+
+<app-form
+  [modelSchema]="modelSchema"
+  [uiSchema]="uiSchema">
+</app-form>
+
+

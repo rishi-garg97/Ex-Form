@@ -1,0 +1,111 @@
+<div class="ex-form">
+
+  <h5>{{uiSchema.name}}</h5>
+
+  <div style="margin: 3% 0;">
+
+
+    <mat-accordion class="example-headers-align">
+
+      <ng-container *ngFor="let stepControl of formGroup.controls | keyvalue;let i = index;">
+
+        <mat-expansion-panel [expanded]="step === uiSchema.steps[i].sequence-1 " (opened)="setStep(uiSchema.steps[i].sequence-1)" hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+             <b> {{uiSchema.steps[i].label}}</b>
+            </mat-panel-title>
+            <mat-panel-description>
+              {{uiSchema.steps[i].description}}
+              <!--<mat-icon>account_circle</mat-icon>-->
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+
+          <form [formGroup]="stepControl.value" style="margin-top: 20px" >
+            <div class="row">
+              <ng-container *ngFor="let property of uiSchema.steps[i].fields;">
+                <ng-template matStepLabel  matStepperIcon="number">{{uiSchema.steps[i].label}}</ng-template>
+
+                <!--Form field for text input  -->
+
+                <div class="form-group col-sm-6" *ngIf="property.dataType=='String'">
+                  <app-text-field [property]="property"
+                                  (addControl)= "addControl($event)" >
+                  </app-text-field>
+                </div>
+
+                <!--Form field for number input  -->
+                <div class="form-group col-sm-6" *ngIf="property.dataType=='Number'" style="margin-bottom:0;">
+
+                  <app-number-field [property]="property"
+                                    (addControl)= "addControl($event)" >
+                  </app-number-field>
+
+                </div>
+
+                <!--Form field for enumeration-->
+
+                <div class="form-group col-sm-6" *ngIf="property.dataType=='Enumeration'"
+                     style="margin-bottom:0px;">
+                  <app-dropdown [property]="property"
+                                (addControl)= "addControl($event)" >
+                  </app-dropdown>
+
+                </div>
+
+                <!--Form field for Measure Datatype-->
+
+                <div class="form-group col-sm-6"
+                     *ngIf="property.dataType=='Measure'"
+                     style="margin-bottom:0;padding-right: 0;">
+
+
+
+                  <app-measure
+                    [property]="property"
+                    (addControl)= "addControl($event)" >
+                  </app-measure>
+
+                </div>
+              </ng-container>
+
+            </div>
+
+            <div>
+              <p style="font-size:13px;"><span class="asterik" style="font-size:16px;">* </span>field are mandatory</p>
+            </div>
+            <div class="btn btn-toolbar">
+              <button mat-button
+                      *ngIf="i > 0"
+                      (click)="prevStep()">
+                Back
+              </button>
+              <button
+                mat-button
+                [disabled]="!stepControl.value.valid"
+                (click)="nextStep()"
+                *ngIf="i < uiSchema.totalSteps-1">
+                Next
+              </button>
+
+              <button
+                mat-raised-button
+                type="button"
+                color="primary"
+                *ngIf= "i === uiSchema.totalSteps-1"
+                (click)="formValue()"
+                [disabled]="!formGroup.valid">
+                Submit
+              </button>
+            </div>
+
+          </form>
+
+        </mat-expansion-panel>
+
+      </ng-container>
+
+    </mat-accordion>
+  </div>
+
+</div>

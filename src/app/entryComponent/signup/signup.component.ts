@@ -28,7 +28,6 @@ export class SignupComponent implements OnInit {
     this.commonService.showHideSpinner(true);
     try {
       await this.authService.SignUp(this.formGroup.controls["email"].value["email"], this.formGroup.controls["password"].value["password"]);
-  //    console.log(user);
       this.authService.sendVerificationMail();
       this.commonService.showHideSpinner(false);
       this.router.navigate(["dashboard"]);

@@ -1,5 +1,6 @@
 [
   {
+    "type": "Normal",
     "name": "Instrument",
     "properties": [
       {
@@ -126,6 +127,7 @@
     ]
   },
   {
+    "type": "Normal",
     "name": "Project",
     "properties": [
       {
@@ -219,6 +221,7 @@
     ]
   },
   {
+    "type": "Normal",
     "name": "Case",
     "properties": [
       {
@@ -433,6 +436,7 @@
     ]
   },
   {
+    "type": "Normal",
     "name": "Sample",
     "properties": [
       {
@@ -1166,6 +1170,7 @@
     ]
   },
   {
+    "type": "Normal",
     "name": "Aliquot",
     "properties": [
       {
@@ -1376,6 +1381,7 @@
     ]
   },
   {
+    "type": "Normal",
     "name": "Diagnosis",
     "properties": [
       {
@@ -2314,6 +2320,7 @@
     ]
   },
   {
+    "type": "Normal",
     "name": "Demographic",
     "properties": [
       {
@@ -2519,6 +2526,7 @@
     ]
   },
   {
+    "type": "Normal",
     "name": "Lab",
     "properties": [
       {
@@ -2597,6 +2605,7 @@
     "foreignKeys": []
   },
   {
+    "type": "Normal",
     "name": "InstrumentModel",
     "properties": [
       {
@@ -2697,6 +2706,7 @@
     "foreignKeys": []
   },
   {
+    "type": "Group",
     "name": "Protocol",
     "properties": [
       {
@@ -2786,7 +2796,7 @@
         "dataType": "Enumeration",
         "name": "labeledQuantitation",
         "alias": "Labeled quantitation",
-        "required": false,
+        "required": true,
         "array": false,
         "delimiter": null,
         "values": [
@@ -3378,6 +3388,7 @@
     ]
   },
   {
+    "type": "Normal",
     "name": "Experiment",
     "properties": [
       {

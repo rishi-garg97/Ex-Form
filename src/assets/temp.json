@@ -1,0 +1,25 @@
+{
+  "type": "Normal",
+  "fields": [
+    {
+      "name": "field_1",
+      "enable": true
+    },
+    {
+      "name": "field_2",
+      "enable": false
+    },
+    {
+      "name": "field_3",
+      "enable": false
+    },
+    {
+      "name": "field_4",
+      "enable": true
+    },
+    {
+      "name": "field_5",
+      "enable": true
+    }
+  ]
+},
