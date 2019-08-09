@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
-import ModelSchema from "../../assets/schema.json";
 import UISchema from "../../assets/ui-schema.json";
 import _ from "lodash";
+import { HttpClient } from "@angular/common/http";
 
 
 @Injectable({
@@ -9,13 +9,17 @@ import _ from "lodash";
 })
 export class DashboardService {
 
-  constructor() { }
-
+  constructor(private http: HttpClient) { }
+  modelSchema: any;
   schema: any;
+  schemaUrl = "assets/schema.json";
+  // getSchemaByHttp() {
+  //   return this.http.get(this.configUrl);
+  // }
 
   getSchema = (name) => {
 
-    const schema = [...ModelSchema];
+    const schema = this.modelSchema;
     // const schema = await Promise.resolve(ModelSchema);
     // const properties = "properties";
     const  entitySchema =  _.find(schema, (formSchema) => {
@@ -64,4 +68,7 @@ export class DashboardService {
     return _.find(UISchema, {type});
   }
 
+  init = async () => {
+    return this.http.get(this.schemaUrl).toPromise();
+  }
 }

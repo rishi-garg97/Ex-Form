@@ -12,8 +12,7 @@ export class FormComponent implements OnInit, OnChanges {
   @Input() uiSchema: any;
   modifiedUiSchema;
 
-  constructor() {
-  }
+  constructor() {  }
 
   ngOnInit() {
     this.initialize();

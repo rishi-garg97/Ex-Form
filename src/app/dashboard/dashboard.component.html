@@ -1,25 +1,40 @@
-<div style="margin:15px 20%;">
-  <div>
+<div class="row" style="margin:0;">
+  <div class="col-sm-6">
+    <app-ui-schema
+      [uiSchemaData]="uiSchema">
+    </app-ui-schema>
 
-    <mat-form-field appearance="outline">
-      <mat-label>Entity</mat-label>
-      <mat-select [(value)]="selected" (selectionChange)="reinitialize()">
-        <mat-option *ngFor="let opt of entity" [value]="opt.name">
-          {{opt.name}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+    <app-model-schema
+      [modelSchemaData]="modelSchema">
+    </app-model-schema>
+
+
+    <!--<mat-card-content>-->
+    <!--<json-editor [options]="formDataEditorOptions" [data]="formData"></json-editor>-->
+    <!--</mat-card-content>-->
+    <!--</mat-card>-->
 
   </div>
-  <div>
+
+  <div class="col-sm-6">
+
+
+
+      <mat-form-field appearance="outline">
+        <mat-label>Entity</mat-label>
+        <mat-select [(value)]="selected" (selectionChange)="reinitialize()">
+          <mat-option *ngFor="let opt of entity" [value]="opt.name">
+            {{opt.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <app-form
+        [modelSchema]="modelSchema"
+        [uiSchema]="uiSchema">
+      </app-form>
+
 
   </div>
 
 </div>
-
-<app-form
-  [modelSchema]="modelSchema"
-  [uiSchema]="uiSchema">
-</app-form>
-
-

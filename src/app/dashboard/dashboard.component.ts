@@ -1,6 +1,8 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, ViewChild} from "@angular/core";
 import {FormGroup} from "@angular/forms";
 import {DashboardService} from "./dashboard.service";
+import {JsonEditorComponent, JsonEditorOptions} from "ang-jsoneditor";
+
 @Component({
   selector: "app-dashboard",
   templateUrl: "./dashboard.component.html",
@@ -17,11 +19,13 @@ export class DashboardComponent implements OnInit {
 
   modelSchema: any;
   formGroup: FormGroup;
-  selected = "Protocol";
+  selected = "Sample";
   uiSchema: any;
 
-  constructor(private dashboardService: DashboardService) {
-  }
+  @ViewChild(JsonEditorComponent, {static: false}) editor: JsonEditorComponent;
+
+
+  constructor(private dashboardService: DashboardService) {  }
 
   ngOnInit() {
     this.initialize();
@@ -30,7 +34,7 @@ export class DashboardComponent implements OnInit {
   initialize = () => {
     this.modelSchema = this.dashboardService.getSchema(this.selected);
     this.uiSchema = this.dashboardService.getUISchema(this.modelSchema.type);
-   }
+  }
 
 
   reinitialize = () => {

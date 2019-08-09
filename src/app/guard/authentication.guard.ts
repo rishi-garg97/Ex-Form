@@ -4,13 +4,16 @@ import { Observable } from "rxjs";
 import {AuthService} from "../entryComponent/services/auth.service";
 import {MatDialog} from "@angular/material";
 import {LoginComponent} from "../entryComponent/login/login.component";
+import {DashboardService} from "../dashboard/dashboard.service";
+
 @Injectable({
   providedIn: "root"
 })
 
 export class AuthenticationGuard implements CanActivate  {
 
-  constructor(private authService: AuthService, private router: Router, private dialog: MatDialog) {
+  constructor(private authService: AuthService, private router: Router, private dialog: MatDialog,
+              private dashboardService: DashboardService) {
 
   }
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
@@ -23,6 +26,11 @@ export class AuthenticationGuard implements CanActivate  {
       return false;
     }
 
+    return this.init();
+  }
+
+  init = async () => {
+    this.dashboardService.modelSchema = await this.dashboardService.init();
     return true;
   }
 }

@@ -5,6 +5,7 @@ export class RequiredValidator implements BaseValidators {
 
   constructor() {
   }
+
   get = () => {
     return Validators.required;
   }

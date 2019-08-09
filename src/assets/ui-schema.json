@@ -21,12 +21,16 @@
       {
         "name": "sampleType",
         "enable": true
+      },
+      {
+        "name": "currentWeight",
+        "enable": true
       }
     ]
   },
   {
     "type": "Group",
-    "viewer": "Step Accordion tab",
+    "viewer": "Stepper Tab Accordian",
     "totalSteps": 2,
     "variants": "horizontal",
     "steps": [
@@ -59,10 +63,9 @@
           },
           {
             "name": "amountOnColumn",
-            "enable":true
+            "enable": true
           }
         ]
-
       },
       {
         "sequence": 2,

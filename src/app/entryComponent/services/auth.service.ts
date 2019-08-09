@@ -11,23 +11,20 @@ import {Router} from "@angular/router";
 })
 
 export class AuthService {
-  userData: any; // Save logged in user data
+  userData: any; // Save logged in user uiSchemaData
 
   constructor(
     public afd: AngularFireDatabase,
     public afs: AngularFirestore,   // Inject Firestore service
     public afAuth: AngularFireAuth, // Inject Firebase auth service
-    public router: Router,
+    public router: Router
   ) {
-    /* Saving user data in localstorage when
+    /* Saving user uiSchemaData in localstorage when
      logged in and setting up null when logged out */
     this.afAuth.authState.subscribe(user => {
       if (user) {
         this.userData = user;
-      //  console.log("%c User JSON string", "color: blue", JSON.stringify(user));
-      //  console.log("%c User JSON string", "color: blue", user);
         localStorage.setItem("user", JSON.stringify(this.userData));
-      //  console.log(JSON.parse(localStorage.getItem("user")));
       } else {
         localStorage.setItem("user", null);
         JSON.parse(localStorage.getItem("user"));
@@ -47,10 +44,7 @@ export class AuthService {
 
     try {
       const  result = await this.afAuth.auth.createUserWithEmailAndPassword(email, password);
-     // console.log(result);
-     // console.log(result.user);
       this.SetUserData(result.user);
-
       return result;
     } catch (error) {
       return error;
@@ -103,14 +97,12 @@ export class AuthService {
 
 
 
-  // /* Setting up user data when sign in with username/password,
+  // /* Setting up user uiSchemaData when sign in with username/password,
   //  sign up with username/password and sign in with social auth
   //  provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
   SetUserData(user) {
 
     const userRef = this.afd.database.ref(`users/${user.uid}`);
-   // console.log(userRef);
-
 
     const userData: User = {
       uid: user.uid,
@@ -145,7 +137,7 @@ export class AuthService {
     });
   }
 
-  // read Data from Firebase
+  // read Data from Firebase database
   getUsers = () => {
 
     const userRef = this.afd.database.ref("users/NoWPNhcWEXX5npSgSk3GdGxIdVw2");
