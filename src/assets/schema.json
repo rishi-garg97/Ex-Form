@@ -1,6 +1,5 @@
 [
   {
-    "type": "Normal",
     "name": "Instrument",
     "properties": [
       {
@@ -127,7 +126,6 @@
     ]
   },
   {
-    "type": "Normal",
     "name": "Project",
     "properties": [
       {
@@ -221,7 +219,6 @@
     ]
   },
   {
-    "type": "Normal",
     "name": "Case",
     "properties": [
       {
@@ -436,7 +433,6 @@
     ]
   },
   {
-    "type": "Normal",
     "name": "Sample",
     "properties": [
       {
@@ -1170,7 +1166,6 @@
     ]
   },
   {
-    "type": "Normal",
     "name": "Aliquot",
     "properties": [
       {
@@ -1381,7 +1376,6 @@
     ]
   },
   {
-    "type": "Normal",
     "name": "Diagnosis",
     "properties": [
       {
@@ -2320,7 +2314,6 @@
     ]
   },
   {
-    "type": "Normal",
     "name": "Demographic",
     "properties": [
       {
@@ -2526,7 +2519,6 @@
     ]
   },
   {
-    "type": "Normal",
     "name": "Lab",
     "properties": [
       {
@@ -2605,7 +2597,6 @@
     "foreignKeys": []
   },
   {
-    "type": "Normal",
     "name": "InstrumentModel",
     "properties": [
       {
@@ -2706,9 +2697,37 @@
     "foreignKeys": []
   },
   {
-    "type": "Group",
     "name": "Protocol",
     "properties": [
+      {
+        "dataType": "Email",
+        "name": "email",
+        "alias": "Email",
+        "required": true,
+        "array": false,
+        "delimiter": null,
+        "minLength": null,
+        "maxLength": 255,
+        "pattern": null,
+        "unique": null,
+        "sequence": null,
+        "isArray": false
+      },
+      {
+        "dataType": "Password",
+        "name": "password",
+        "alias": "Password",
+        "required": true,
+        "array": false,
+        "delimiter": null,
+        "minLength": null,
+        "maxLength": 255,
+        "pattern": null,
+        "unique": null,
+        "sequence": null,
+        "isArray": false
+      },
+
       {
         "dataType": "Ref",
         "name": "protocolName",
@@ -3388,7 +3407,6 @@
     ]
   },
   {
-    "type": "Normal",
     "name": "Experiment",
     "properties": [
       {

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, ViewChild} from "@angular/core";
+import {Component, DoCheck, EventEmitter, HostListener, Input, OnInit, Output, ViewChild} from "@angular/core";
 import { JsonEditorComponent, JsonEditorOptions } from "ang-jsoneditor";
 
 @Component({
@@ -10,6 +10,7 @@ export class UiSchemaComponent implements OnInit {
   @ViewChild(JsonEditorComponent, {static: false}) editor: JsonEditorComponent;
 
   @Input() uiSchemaData: any;
+  @Output() public uiSchemaChange = new EventEmitter();
 
   public uiSchemaEditorOptions: JsonEditorOptions;
 
@@ -18,8 +19,16 @@ export class UiSchemaComponent implements OnInit {
     this.uiSchemaEditorOptions.mode = "code";
   }
 
-  ngOnInit() {
 
+  ngOnInit() {
+    console.log("Old UI Schema", this.uiSchemaData);
   }
 
+  getData(event) {
+    if (this.editor.isValidJson()) {
+      this.uiSchemaChange.emit(this.editor.get());
+    } else {
+      console.log("UI Schema is incorrect");
+    }
+  }
 }

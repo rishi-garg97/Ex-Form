@@ -3,27 +3,35 @@
     "type": "Normal",
     "fields": [
       {
-        "name": "sampleSubmitterID",
+        "name": "email",
         "enable": true
       },
       {
-        "name": "caseSubmitterID",
+        "name": "password",
+        "enable": true
+      },
+      {
+        "name": "protocolName",
+        "enable": true
+      },
+      {
+        "name": "documentName",
         "enable": false
       },
       {
-        "name": "projectSubmitterID",
+        "name": "startingAmount",
         "enable": false
       },
       {
-        "name": "uuid",
+        "name": "labeledQuantitation",
         "enable": true
       },
       {
-        "name": "sampleType",
+        "name": "fractionsAnalyzedCount",
         "enable": true
       },
       {
-        "name": "currentWeight",
+        "name": "columnType",
         "enable": true
       }
     ]
@@ -41,6 +49,14 @@
         "description": "Little description of Step 1",
         "enable": true,
         "fields": [
+          {
+            "name": "email",
+            "enable": true
+          },
+          {
+            "name": "password",
+            "enable": true
+          },
           {
             "name": "protocolName",
             "enable": true

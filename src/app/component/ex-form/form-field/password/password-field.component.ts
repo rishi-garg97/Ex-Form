@@ -41,6 +41,7 @@ export class PasswordFieldComponent implements OnInit {
     }
 
     this.formGroup = this.formBuilder.group({ [this.property.name] : [{value: "" , disabled: !this.property.enable}, validators] });
+    this.formGroup.updateValueAndValidity();
     this.addControl.emit({key: this.property.name , value: this.formGroup});
   }
 

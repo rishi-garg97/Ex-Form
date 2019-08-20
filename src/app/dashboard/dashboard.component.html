@@ -1,40 +1,50 @@
 <div class="row" style="margin:0;">
+  &nbsp;&nbsp;&nbsp;&nbsp;<h4>angular-jsonschema-form</h4> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <ul class="nav nav-pills mb-3" role="tablist">
+    <li class="nav-item"
+        *ngFor="let type of formType"
+        (click)="setUiSchema(type)">
+      <a class="nav-link active"
+         data-toggle="pill"
+         [class.active]="type === selectedType"
+         href="">{{type}}</a>
+    </li>
+  </ul>
+
+</div>
+
+<div class="row" style="margin:0;">
   <div class="col-sm-6">
     <app-ui-schema
-      [uiSchemaData]="uiSchema">
+      [uiSchemaData]="editorUISchema"
+      (uiSchemaChange)="uiSchemaChange($event)">
     </app-ui-schema>
 
     <app-model-schema
-      [modelSchemaData]="modelSchema">
+      [modelSchemaData]="editorModelSchema"
+      (modelSchemaChange)="modelSchemaChange($event)">
     </app-model-schema>
 
 
-    <!--<mat-card-content>-->
-    <!--<json-editor [options]="formDataEditorOptions" [data]="formData"></json-editor>-->
-    <!--</mat-card-content>-->
-    <!--</mat-card>-->
-
   </div>
-
   <div class="col-sm-6">
 
 
 
-      <mat-form-field appearance="outline">
-        <mat-label>Entity</mat-label>
-        <mat-select [(value)]="selected" (selectionChange)="reinitialize()">
-          <mat-option *ngFor="let opt of entity" [value]="opt.name">
-            {{opt.name}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+      <!--<mat-form-field appearance="outline">-->
+        <!--<mat-label>Entity</mat-label>-->
+        <!--<mat-select [(value)]="selected" (selectionChange)="reinitialize()">-->
+          <!--<mat-option *ngFor="let opt of entity" [value]="opt.name">-->
+            <!--{{opt.name}}-->
+          <!--</mat-option>-->
+        <!--</mat-select>-->
+      <!--</mat-form-field>-->
 
       <app-form
-        [modelSchema]="modelSchema"
-        [uiSchema]="uiSchema">
+        [modelSchema]="formModelSchema"
+        [uiSchema]="formUISchema">
       </app-form>
 
 
   </div>
-
 </div>

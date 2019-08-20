@@ -1,7 +1,6 @@
 import {Component, OnInit, ViewChild} from "@angular/core";
-import {FormGroup} from "@angular/forms";
 import {DashboardService} from "./dashboard.service";
-import {JsonEditorComponent, JsonEditorOptions} from "ang-jsoneditor";
+import {JsonEditorComponent} from "ang-jsoneditor";
 
 @Component({
   selector: "app-dashboard",
@@ -17,10 +16,13 @@ export class DashboardComponent implements OnInit {
     {name: "Protocol"}, {name: "Sample"}
   ];
 
-  modelSchema: any;
-  formGroup: FormGroup;
-  selected = "Sample";
-  uiSchema: any;
+  formType = ["Normal", "Group"];
+  editorModelSchema: any;
+  formModelSchema: any;
+  editorUISchema: any;
+  formUISchema: any;
+  selected = "Protocol";
+  selectedType = "Normal";
 
   @ViewChild(JsonEditorComponent, {static: false}) editor: JsonEditorComponent;
 
@@ -32,8 +34,10 @@ export class DashboardComponent implements OnInit {
   }
 
   initialize = () => {
-    this.modelSchema = this.dashboardService.getSchema(this.selected);
-    this.uiSchema = this.dashboardService.getUISchema(this.modelSchema.type);
+    this.editorModelSchema = this.dashboardService.enitityModelSchema(this.selected);
+    this.formModelSchema = this.dashboardService.schema.model.form;
+    this.editorUISchema = this.dashboardService.uiSchema(this.selectedType);
+    this.formUISchema = this.dashboardService.schema.ui.form;
   }
 
 
@@ -41,5 +45,16 @@ export class DashboardComponent implements OnInit {
     this.initialize();
   }
 
+  uiSchemaChange = (data) => {
+    this.formUISchema =  data;
+  }
 
+  modelSchemaChange = (data) => {
+    this.formModelSchema = data;
+  }
+
+  setUiSchema = (id) => {
+    this.editorUISchema = this.dashboardService.uiSchema(id);
+    this.formUISchema = this.dashboardService.schema.ui.form;
+  }
 }

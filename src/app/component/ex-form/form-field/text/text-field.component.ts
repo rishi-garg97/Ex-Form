@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import {Component, OnInit, Input, Output, EventEmitter, OnChanges} from "@angular/core";
 import {ValidationMessageGenerator} from "../../validators/validation-message-generator";
 import {RequiredValidator} from "../../validators/required-validator";
 import {MinLengthValidator} from "../../validators/min-length-validators";
@@ -11,7 +11,7 @@ import {FormBuilder, FormGroup} from "@angular/forms";
   templateUrl: "./text-field.component.html",
   styleUrls: ["./text-field.component.css"]
 })
-export class TextFieldComponent implements OnInit {
+export class TextFieldComponent implements OnInit, OnChanges {
 
   formGroup: FormGroup;
   @Input() property;
@@ -21,6 +21,12 @@ export class TextFieldComponent implements OnInit {
 
   ngOnInit() {
     this.addValidator();
+  }
+
+  ngOnChanges() {
+    // if (this.formGroup) {
+    //   this.formGroup.updateValueAndValidity();
+    // }
   }
 
     addValidator = () => {
@@ -40,6 +46,7 @@ export class TextFieldComponent implements OnInit {
           }
 
           this.formGroup = this.formBuilder.group({ [this.property.name] : [{value: "" , disabled: !this.property.enable}, validators] });
+          this.formGroup.updateValueAndValidity();
           this.addControl.emit({key: this.property.name , value: this.formGroup});
     }
 

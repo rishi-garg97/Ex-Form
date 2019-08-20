@@ -28,6 +28,7 @@ export class EmailFieldComponent implements OnInit {
     validators.push(Validators.email);
 
     this.formGroup = this.formBuilder.group({ [this.property.name] : [{value: "" , disabled: !this.property.enable}, validators] });
+    this.formGroup.updateValueAndValidity();
     this.addControl.emit({key: this.property.name , value: this.formGroup});
   }
 

@@ -40,7 +40,8 @@ export class DropdownComponent implements OnInit {
           this.formGroup = this.formBuilder.group(
                            { [this.property.name] : [{value: dropDowninitialValue, disabled: dropwDownDisable}, validators ]}
                            );
-          this.addControl.emit({key: this.property.name , value: this.formGroup});
+        this.formGroup.updateValueAndValidity();
+        this.addControl.emit({key: this.property.name , value: this.formGroup});
 
     }
     getError = () => {

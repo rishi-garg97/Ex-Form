@@ -42,12 +42,12 @@ import {AuthService} from "./entryComponent/services/auth.service";
 import {LoadingSpinnerComponent} from "./loading-spinner/loading-spinner.component";
 import {CommonService} from "./service/common.service";
 import {StepFormComponent} from "./component/ex-form/viewer/group/step-wizard/step-form.component";
-import {SimpleFormComponent} from "./component/simple-form/simple-form.component";
 import {SimpleComponent} from "./component/ex-form/viewer/basic/simple/simple.component";
 import {AccordianComponent} from "./component/ex-form/viewer/group/accordian/accordian.component";
 import {TabComponent} from "./component/ex-form/viewer/group/tabs/tab/tab.component";
 import {UiSchemaComponent} from "./json-editor/ui-schema/ui-schema.component";
 import {ModelSchemaComponent} from "./json-editor/model-schema/model-schema.component";
+import { RadioComponent } from './component/ex-form/form-field/radio/radio.component';
 
 @NgModule({
   declarations: [
@@ -66,12 +66,12 @@ import {ModelSchemaComponent} from "./json-editor/model-schema/model-schema.comp
     PasswordFieldComponent,
     LoadingSpinnerComponent,
     StepFormComponent,
-    SimpleFormComponent,
     SimpleComponent,
     AccordianComponent,
     TabComponent,
     UiSchemaComponent,
-    ModelSchemaComponent
+    ModelSchemaComponent,
+    RadioComponent
   ],
   imports: [
     FormsModule,

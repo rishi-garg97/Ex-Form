@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from "@angular/core";
+import {Component, Input, OnChanges, OnInit} from "@angular/core";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import _ from "lodash";
 
@@ -7,7 +7,7 @@ import _ from "lodash";
   templateUrl: "./accordian.component.html",
   styleUrls: ["./accordian.component.css"]
 })
-export class AccordianComponent implements OnInit {
+export class AccordianComponent implements OnInit, OnChanges {
   formGroup: FormGroup = this.formBuilder.group({});
   step = 0;
   @Input() uiSchema: any;
@@ -23,6 +23,10 @@ export class AccordianComponent implements OnInit {
     });
     this.formGroup = this.formBuilder.group(allSteps);
   }
+  ngOnChanges() {
+    this.formGroup = this.formBuilder.group({});  // when ui or model formSchema changes re initialize form group
+  }
+
 
   addControl = (data) => {
     _.each(this.uiSchema.steps, (step) => {

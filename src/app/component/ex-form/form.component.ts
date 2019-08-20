@@ -26,15 +26,11 @@ export class FormComponent implements OnInit, OnChanges {
       const prev = JSON.stringify(chng.previousValue);
       if (cur !== prev) {
         this.initialize();
-        // this.formGroup = this.formBuilder.group({});
       }
     }
   }
 
   initialize = () => {
-    // console.log(this.modelSchema);
-    // console.log(this.uiSchema);
-
     const uiSchema: any = Object.assign({}, this.uiSchema);
 
     if (uiSchema.type === "Normal") {

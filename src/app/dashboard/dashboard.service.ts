@@ -10,18 +10,45 @@ import { HttpClient } from "@angular/common/http";
 export class DashboardService {
 
   constructor(private http: HttpClient) { }
-  modelSchema: any;
-  schema: any;
+  modelSchema: any;  // it is initialized in auth service.
+  // formSchema: any;
   schemaUrl = "assets/schema.json";
+  schema = {
+    model: {
+      form: {},
+      editor: {}
+    },
+    ui: {
+      form: {},
+      editor: {}
+    }
+  }
   // getSchemaByHttp() {
   //   return this.http.get(this.configUrl);
   // }
 
-  getSchema = (name) => {
+//   formModelSchema = (name) => {
+//
+//   const schema = {...this.modelSchema};
+//   const  entitySchema =  _.find(schema, (formSchema) => {
+//     if (formSchema.name === name) {
+//       return formSchema;
+//     }
+//   });
+//   if ( entitySchema.steps && entitySchema.steps !== null) {
+//     entitySchema.steps.forEach((step) => {
+//       step.refs = [...entitySchema.refs];
+//       step = this.mapsUnitToValue(step);
+//     });
+//   } else {
+//     entitySchema.properties =  this.mapsUnitToValue(entitySchema);
+//   }
+//   this.schema.model.form = {...entitySchema};
+//   return this.schema.model.form;
+// }
 
-    const schema = this.modelSchema;
-    // const schema = await Promise.resolve(ModelSchema);
-    // const properties = "properties";
+  enitityModelSchema = (name) => {
+    const schema = {...this.modelSchema};
     const  entitySchema =  _.find(schema, (formSchema) => {
       if (formSchema.name === name) {
         return formSchema;
@@ -35,9 +62,10 @@ export class DashboardService {
     } else {
       entitySchema.properties =  this.mapsUnitToValue(entitySchema);
     }
-    this.schema = {...entitySchema};
-    return this.schema;
-
+    const modelEditor = {...entitySchema};
+    this.schema.model.form = modelEditor;
+    this.schema.model.editor = _.clone(modelEditor);
+    return this.schema.model.editor;
   }
 
   mapsUnitToValue = (refEntitySchema) => {
@@ -64,9 +92,17 @@ export class DashboardService {
   }
 
 
-  getUISchema = (type) => {
-    return _.find(UISchema, {type});
+  uiSchema = (type) => {
+    const uiEditor = _.find(UISchema, {type});
+    this.schema.ui.form = _.cloneDeep(uiEditor);
+    this.schema.ui.editor = _.cloneDeep(uiEditor);
+    return this.schema.ui.editor;
   }
+
+  // formUISchema = (type) => {
+  //   this.schema.model.form =  _.find(UISchema, {type});
+  //   return {...this.schema.model.form};
+  // }
 
   init = async () => {
     return this.http.get(this.schemaUrl).toPromise();

@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from "@angular/core";
+import {Component, OnInit, Input, OnChanges} from "@angular/core";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import _ from "lodash";
 
@@ -7,7 +7,7 @@ import _ from "lodash";
   templateUrl: "./step-form.component.html",
   styleUrls: ["./step-form.component.css"]
 })
-export class StepFormComponent implements OnInit {
+export class StepFormComponent implements OnInit, OnChanges {
   formGroup: FormGroup = this.formBuilder.group({});
   @Input() uiSchema: any;
 
@@ -20,6 +20,10 @@ export class StepFormComponent implements OnInit {
       allSteps[step] = this.formBuilder.group({});
     });
     this.formGroup = this.formBuilder.group(allSteps);
+  }
+
+  ngOnChanges() {
+    this.formGroup = this.formBuilder.group({});  // when ui or model formSchema changes re initialize form group
   }
 
   addControl = (data) => {

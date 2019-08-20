@@ -4,6 +4,6 @@
   </mat-card-header>
 
   <mat-card-content>
-    <json-editor [options]="modelSchemaEditorOptions" [data]="modelSchemaData"></json-editor>
+    <json-editor [options]="modelSchemaEditorOptions" [data]="modelSchemaData" (keyup)="getData($event)"></json-editor>
   </mat-card-content>
 </mat-card>

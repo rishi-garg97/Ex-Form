@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from "@angular/core";
+import {Component, Input, OnChanges, OnInit} from "@angular/core";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import _ from "lodash";
 
@@ -7,13 +7,21 @@ import _ from "lodash";
   templateUrl: "./tab.component.html",
   styleUrls: ["./tab.component.css"]
 })
-export class TabComponent implements OnInit {
+export class TabComponent implements OnInit, OnChanges {
   formGroup: FormGroup = this.formBuilder.group({});
   @Input() uiSchema: any;
 
   constructor(private formBuilder: FormBuilder) {
   }
   ngOnInit() {
+    this.buildStepFormGroup();
+  }
+
+  ngOnChanges() {
+    this.buildStepFormGroup();
+  }
+
+  buildStepFormGroup = () => {
     const allSteps = [];
     const steps = _.range(this.uiSchema.totalSteps);
     steps.forEach((step) => {
@@ -21,6 +29,7 @@ export class TabComponent implements OnInit {
     });
     this.formGroup = this.formBuilder.group(allSteps);
   }
+
 
   addControl = (data) => {
     _.each(this.uiSchema.steps, (step) => {

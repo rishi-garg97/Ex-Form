@@ -20,14 +20,32 @@
 
                 <!--Form field for text input  -->
 
-                <div class="form-group col-sm-6" *ngIf="property.dataType=='String'">
+                <div class="form-group col-sm-6" *ngIf="property && property.dataType=='String'">
                   <app-text-field [property]="property"
                                   (addControl)= "addControl($event)" >
                   </app-text-field>
                 </div>
 
+                <!--Form field for email input  -->
+
+                <div class="form-group col-sm-6" *ngIf="property && property.dataType=='Email'">
+
+                  <app-email-field  [property]="property"
+                                    (addControl)= "addControl($event)" >
+                  </app-email-field>
+                </div>
+
+                <!--Form field for password input  -->
+
+                <div class="form-group col-sm-6" *ngIf="property && property.dataType=='Password'">
+
+                  <app-password-field  [property]="property"
+                                       (addControl)= "addControl($event)" >
+                  </app-password-field>
+                </div>
+
                 <!--Form field for number input  -->
-                <div class="form-group col-sm-6" *ngIf="property.dataType=='Number'" style="margin-bottom:0;">
+                <div class="form-group col-sm-6" *ngIf="property && property.dataType=='Number'" style="margin-bottom:0;">
 
                   <app-number-field [property]="property"
                                     (addControl)= "addControl($event)" >
@@ -37,7 +55,7 @@
 
                 <!--Form field for enumeration-->
 
-                <div class="form-group col-sm-6" *ngIf="property.dataType=='Enumeration'"
+                <div class="form-group col-sm-6" *ngIf="property && property.dataType=='Enumeration'"
                      style="margin-bottom:0px;">
                   <app-dropdown [property]="property"
                                 (addControl)= "addControl($event)" >
@@ -48,7 +66,7 @@
                 <!--Form field for Measure Datatype-->
 
                 <div class="form-group col-sm-6"
-                     *ngIf="property.dataType=='Measure'"
+                     *ngIf="property && property.dataType=='Measure'"
                      style="margin-bottom:0;padding-right: 0;">
 
 

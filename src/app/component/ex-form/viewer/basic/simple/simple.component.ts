@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from "@angular/core";
+import {AfterViewInit, Component, Input, OnChanges, OnInit} from "@angular/core";
 import {FormBuilder, FormGroup} from "@angular/forms";
 
 @Component({
@@ -6,7 +6,7 @@ import {FormBuilder, FormGroup} from "@angular/forms";
   templateUrl: "./simple.component.html",
   styleUrls: ["./simple.component.css"]
 })
-export class SimpleComponent implements OnInit {
+export class SimpleComponent implements OnInit, OnChanges {
   formGroup: FormGroup = this.formBuilder.group({});
   @Input() uiSchema;
 
@@ -14,6 +14,10 @@ export class SimpleComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  ngOnChanges() {
+    this.formGroup = this.formBuilder.group({}); // when ui or model formSchema changes re initialize form group
   }
 
   addControl = (data) => {
@@ -25,6 +29,7 @@ export class SimpleComponent implements OnInit {
   }
 
   reset = () => {
+    console.log(this.formGroup);
     this.formGroup.reset();
   }
 
