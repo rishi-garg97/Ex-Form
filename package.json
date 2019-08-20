@@ -1,15 +1,16 @@
 {
-  "name": "json-form",
-  "version": "0.0.0",
+  "name": "angulr-json-form",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "ng build"
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "@angular/animations": "^8.0.2",
     "@angular/cdk": "^8.0.1",
@@ -57,5 +58,20 @@
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
     "typescript": "~3.4.3"
-  }
+  },
+  "description": "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.3.",
+  "main": "karma.conf.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rishi-garg97/ex-form.git"
+  },
+  "files": [
+    "dist/*.{ts,html}"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rishi-garg97/ex-form/issues"
+  },
+  "homepage": "https://github.com/rishi-garg97/ex-form#readme"
 }
