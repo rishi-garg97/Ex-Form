@@ -397,6 +397,9 @@ var AppComponent = /** @class */ (function () {
     }
     AppComponent.prototype.ngOnInit = function () {
     };
+    AppComponent.ctorParameters = function () { return [
+        { type: _service_common_service__WEBPACK_IMPORTED_MODULE_2__["CommonService"] }
+    ]; };
     AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: "app-root",
@@ -748,6 +751,9 @@ var DropdownComponent = /** @class */ (function () {
         this.formGroup.updateValueAndValidity();
         this.addControl.emit({ key: this.property.name, value: this.formGroup });
     };
+    DropdownComponent.ctorParameters = function () { return [
+        { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] }
+    ]; };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
@@ -825,6 +831,9 @@ var EmailFieldComponent = /** @class */ (function () {
     EmailFieldComponent.prototype.ngOnInit = function () {
         this.addValidator();
     };
+    EmailFieldComponent.ctorParameters = function () { return [
+        { type: _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormBuilder"] }
+    ]; };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
@@ -909,6 +918,9 @@ var MeasureComponent = /** @class */ (function () {
         this.newProperty.unit = tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({}, this.property);
         this.newProperty.unit.name += "Unit";
     };
+    MeasureComponent.ctorParameters = function () { return [
+        { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] }
+    ]; };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
@@ -1003,6 +1015,10 @@ var NumberFieldComponent = /** @class */ (function () {
     NumberFieldComponent.prototype.ngOnInit = function () {
         this.addValidator();
     };
+    NumberFieldComponent.ctorParameters = function () { return [
+        { type: _form_building_service__WEBPACK_IMPORTED_MODULE_2__["FormBuildingService"] },
+        { type: _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormBuilder"] }
+    ]; };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
@@ -1095,6 +1111,9 @@ var PasswordFieldComponent = /** @class */ (function () {
     PasswordFieldComponent.prototype.ngOnInit = function () {
         this.addValidator();
     };
+    PasswordFieldComponent.ctorParameters = function () { return [
+        { type: _angular_forms__WEBPACK_IMPORTED_MODULE_7__["FormBuilder"] }
+    ]; };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
@@ -1236,6 +1255,9 @@ var TextFieldComponent = /** @class */ (function () {
         //   this.formGroup.updateValueAndValidity();
         // }
     };
+    TextFieldComponent.ctorParameters = function () { return [
+        { type: _angular_forms__WEBPACK_IMPORTED_MODULE_7__["FormBuilder"] }
+    ]; };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
@@ -1662,6 +1684,9 @@ var SimpleComponent = /** @class */ (function () {
     SimpleComponent.prototype.ngOnChanges = function () {
         this.formGroup = this.formBuilder.group({}); // when ui or model formSchema changes re initialize form group
     };
+    SimpleComponent.ctorParameters = function () { return [
+        { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] }
+    ]; };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
@@ -1758,6 +1783,9 @@ var AccordianComponent = /** @class */ (function () {
     AccordianComponent.prototype.prevStep = function () {
         this.step--;
     };
+    AccordianComponent.ctorParameters = function () { return [
+        { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] }
+    ]; };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
@@ -1843,6 +1871,9 @@ var StepFormComponent = /** @class */ (function () {
     StepFormComponent.prototype.ngOnChanges = function () {
         this.formGroup = this.formBuilder.group({}); // when ui or model formSchema changes re initialize form group
     };
+    StepFormComponent.ctorParameters = function () { return [
+        { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] }
+    ]; };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
@@ -1930,6 +1961,9 @@ var TabComponent = /** @class */ (function () {
     TabComponent.prototype.ngOnChanges = function () {
         this.buildStepFormGroup();
     };
+    TabComponent.ctorParameters = function () { return [
+        { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] }
+    ]; };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
@@ -2013,6 +2047,9 @@ var JsonFormComponent = /** @class */ (function () {
         }
         return this.validationService.getErrorMessage(this.formGroup.get(control.name));
     };
+    JsonFormComponent.ctorParameters = function () { return [
+        { type: _validation_service_service__WEBPACK_IMPORTED_MODULE_3__["ValidationServiceService"] }
+    ]; };
     JsonFormComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: "app-json-form",
@@ -2125,6 +2162,9 @@ var ValidationServiceService = /** @class */ (function () {
             myForm.get(field.name).controls.unit.disable();
         }
     };
+    ValidationServiceService.ctorParameters = function () { return [
+        { type: _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormBuilder"] }
+    ]; };
     ValidationServiceService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: "root"
@@ -2203,6 +2243,9 @@ var DashboardComponent = /** @class */ (function () {
     DashboardComponent.prototype.ngOnInit = function () {
         this.initialize();
     };
+    DashboardComponent.ctorParameters = function () { return [
+        { type: _dashboard_service__WEBPACK_IMPORTED_MODULE_2__["DashboardService"] }
+    ]; };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(ang_jsoneditor__WEBPACK_IMPORTED_MODULE_3__["JsonEditorComponent"], { static: false }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", ang_jsoneditor__WEBPACK_IMPORTED_MODULE_3__["JsonEditorComponent"])
@@ -2339,6 +2382,9 @@ var DashboardService = /** @class */ (function () {
             });
         }); };
     }
+    DashboardService.ctorParameters = function () { return [
+        { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"] }
+    ]; };
     DashboardService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: "root"
@@ -2469,6 +2515,16 @@ var LoginComponent = /** @class */ (function () {
     LoginComponent.prototype.cancel = function () {
         this.dialogRef.close();
     };
+    LoginComponent.ctorParameters = function () { return [
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
+        { type: _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatDialogRef"] },
+        { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [_angular_material__WEBPACK_IMPORTED_MODULE_3__["MAT_DIALOG_DATA"],] }] },
+        { type: _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormBuilder"] },
+        { type: _services_auth_service__WEBPACK_IMPORTED_MODULE_5__["AuthService"] },
+        { type: _service_common_service__WEBPACK_IMPORTED_MODULE_6__["CommonService"] },
+        { type: _service_snack_bar_message_service__WEBPACK_IMPORTED_MODULE_7__["SnackBarMessageService"] },
+        { type: _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatDialog"] }
+    ]; };
     LoginComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: "app-login",
@@ -2647,6 +2703,12 @@ var AuthService = /** @class */ (function () {
             _this.router.navigate([""]);
         });
     };
+    AuthService.ctorParameters = function () { return [
+        { type: _angular_fire_database__WEBPACK_IMPORTED_MODULE_5__["AngularFireDatabase"] },
+        { type: _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_4__["AngularFirestore"] },
+        { type: _angular_fire_auth__WEBPACK_IMPORTED_MODULE_3__["AngularFireAuth"] },
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"] }
+    ]; };
     AuthService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: "root"
@@ -2773,6 +2835,16 @@ var SignupComponent = /** @class */ (function () {
     SignupComponent.prototype.cancel = function () {
         this.dialogRef.close();
     };
+    SignupComponent.ctorParameters = function () { return [
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
+        { type: _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatDialogRef"] },
+        { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [_angular_material__WEBPACK_IMPORTED_MODULE_3__["MAT_DIALOG_DATA"],] }] },
+        { type: _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormBuilder"] },
+        { type: _component_ex_form_form_building_service__WEBPACK_IMPORTED_MODULE_5__["FormBuildingService"] },
+        { type: _services_auth_service__WEBPACK_IMPORTED_MODULE_7__["AuthService"] },
+        { type: _service_common_service__WEBPACK_IMPORTED_MODULE_8__["CommonService"] },
+        { type: _service_snack_bar_message_service__WEBPACK_IMPORTED_MODULE_9__["SnackBarMessageService"] }
+    ]; };
     SignupComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: "app-signup",
@@ -2844,6 +2916,12 @@ var AuthenticationGuard = /** @class */ (function () {
         }
         return this.init();
     };
+    AuthenticationGuard.ctorParameters = function () { return [
+        { type: _entryComponent_services_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"] },
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
+        { type: _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatDialog"] },
+        { type: _dashboard_dashboard_service__WEBPACK_IMPORTED_MODULE_6__["DashboardService"] }
+    ]; };
     AuthenticationGuard = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: "root"
@@ -2909,6 +2987,10 @@ var ToolBarComponent = /** @class */ (function () {
     }
     ToolBarComponent.prototype.ngOnInit = function () {
     };
+    ToolBarComponent.ctorParameters = function () { return [
+        { type: _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDialog"] },
+        { type: _entryComponent_services_auth_service__WEBPACK_IMPORTED_MODULE_5__["AuthService"] }
+    ]; };
     ToolBarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: "app-tool-bar",
@@ -3181,6 +3263,9 @@ var SnackBarMessageService = /** @class */ (function () {
             _this.snackBar.open(message, action, _this.config);
         };
     }
+    SnackBarMessageService.ctorParameters = function () { return [
+        { type: _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatSnackBar"] }
+    ]; };
     SnackBarMessageService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: "root"
