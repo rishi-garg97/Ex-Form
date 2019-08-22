@@ -1628,4 +1628,4 @@ AppModule = __decorate([
  */
 
 export { AppModule, AppComponent as ɵa, CommonService as ɵb, RadioComponent as ɵba, AngularMaterialModule as ɵbb, AppRoutingModule as ɵbc, AuthenticationGuard as ɵbd, environment as ɵbe, JsonFormComponent as ɵc, ValidationServiceService as ɵd, FormComponent as ɵe, TextFieldComponent as ɵf, ValidationMessageGeneratorService as ɵg, NumberFieldComponent as ɵh, DropdownComponent as ɵi, MeasureComponent as ɵj, DashboardComponent as ɵk, DashboardService as ɵl, LoginComponent as ɵm, AuthService as ɵn, SnackBarMessageService as ɵo, ToolBarComponent as ɵp, SignupComponent as ɵq, EmailFieldComponent as ɵr, PasswordFieldComponent as ɵs, LoadingSpinnerComponent as ɵt, StepFormComponent as ɵu, SimpleComponent as ɵv, AccordianComponent as ɵw, TabComponent as ɵx, UiSchemaComponent as ɵy, ModelSchemaComponent as ɵz };
-//# sourceMappingURL=angulr-json-form.js.map
+//# sourceMappingURL=angular-json-form.js.map
