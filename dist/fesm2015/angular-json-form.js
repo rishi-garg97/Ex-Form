@@ -205,7 +205,6 @@ let JsonFormComponent = class JsonFormComponent {
         this.validationService = validationService;
         this.http = http;
         this.title = "JsonForm";
-        this.schema = this.http.get(`url:"../../../assets/schema.json"`);
         this.login = () => {
             console.log(this.formGroup.value);
         };
@@ -215,6 +214,7 @@ let JsonFormComponent = class JsonFormComponent {
         this.enable = (field) => {
             this.validationService.enableUnit(field, this.formGroup);
         };
+        this.schema = this.http.get("./assets/schema.json").toPromise();
     }
     ngOnInit() {
         this.formGroup = this.validationService.buildForm();
@@ -650,7 +650,6 @@ MeasureComponent = __decorate([
 let DashboardService = class DashboardService {
     constructor(http) {
         this.http = http;
-        this.UISchema = this.http.get(`url: "../../assets/ui-schema.json"`);
         // formSchema: any;
         this.schemaUrl = "assets/schema.json";
         this.schema = {
@@ -663,28 +662,6 @@ let DashboardService = class DashboardService {
                 editor: {}
             }
         };
-        // getSchemaByHttp() {
-        //   return this.http.get(this.configUrl);
-        // }
-        //   formModelSchema = (name) => {
-        //
-        //   const schema = {...this.modelSchema};
-        //   const  entitySchema =  _.find(schema, (formSchema) => {
-        //     if (formSchema.name === name) {
-        //       return formSchema;
-        //     }
-        //   });
-        //   if ( entitySchema.steps && entitySchema.steps !== null) {
-        //     entitySchema.steps.forEach((step) => {
-        //       step.refs = [...entitySchema.refs];
-        //       step = this.mapsUnitToValue(step);
-        //     });
-        //   } else {
-        //     entitySchema.properties =  this.mapsUnitToValue(entitySchema);
-        //   }
-        //   this.schema.model.form = {...entitySchema};
-        //   return this.schema.model.form;
-        // }
         this.enitityModelSchema = (name) => {
             const schema = Object.assign({}, this.modelSchema);
             const entitySchema = _.find(schema, (formSchema) => {
@@ -734,6 +711,9 @@ let DashboardService = class DashboardService {
         };
         this.init = () => __awaiter(this, void 0, void 0, function* () {
             return this.http.get(this.schemaUrl).toPromise();
+        });
+        this.initUiSchema = () => __awaiter(this, void 0, void 0, function* () {
+            return this.http.get("./assets/ui-schema.json").toPromise();
         });
     }
 };
@@ -995,7 +975,7 @@ SignupComponent = __decorate([
     Component({
         selector: "app-signup",
         template: "<div class=\"main\">\n  <h2 mat-dialog-title>Sign Up</h2>\n  <mat-dialog-content>\n    <form [formGroup]=\"formGroup\" class=\"ex-form\">\n      <div>\n        <ng-container *ngFor=\"let property of schema.properties;let i=index;\">\n          <!--Form field for text input  -->\n          <div class=\"form-group\" *ngIf=\"property.dataType=='String'\">\n            <app-text-field [property]=\"property\"\n                            (addControl)= \"addControl($event)\" >\n            </app-text-field>\n          </div>\n\n          <!--Form field for number input  -->\n          <div class=\"form-group\" *ngIf=\"property.dataType=='Number'\" style=\"margin-bottom:0;\">\n\n            <app-number-field [property]=\"property\"\n                              (addControl)= \"addControl($event)\" >\n            </app-number-field>\n          </div>\n\n          <div class=\"form-group\" *ngIf=\"property.dataType=='Email'\" style=\"margin-bottom:0;\">\n\n            <app-email-field  [property]=\"property\"\n                              (addControl)= \"addControl($event)\" >\n            </app-email-field>\n          </div>\n\n          <div class=\"form-group\" *ngIf=\"property.dataType=='Password'\" style=\"margin-bottom:0;\">\n\n            <app-password-field  [property]=\"property\"\n                                 (addControl)= \"addControl($event)\" >\n            </app-password-field>\n          </div>\n\n        </ng-container>\n      </div>\n\n    </form>\n  </mat-dialog-content>\n  <mat-dialog-actions>\n    <button mat-button (click)=\"signup()\" [disabled]=\"!formGroup.valid\" color=\"primary\">Sign Up</button>\n    <button mat-button (click)=\"cancel()\" color=\"primary\">Cancel</button>\n\n  </mat-dialog-actions>\n\n</div>\n",
-        styles: [".asterik{color:red}.main{width:450px}.form-group{padding:0;margin-bottom:3px}.mat-form-field{-webkit-appearance:none;-moz-appearance:none;appearance:none}::ng-deep .mat-form-field-flex>.mat-form-field-infix{padding:.35em 0!important}::ng-deep .mat-form-field-label-wrapper{top:-1.5em}::ng-deep .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label{-webkit-transform:translateY(-1.1em) scale(.75);transform:translateY(-1.1em) scale(.75);width:133.33333%}.mat-form-field-wrapper{padding:0}"]
+        styles: [".asterik{color:red}.main{width:450px;height:auto}.form-group{padding:0;margin-bottom:3px}.mat-form-field{-webkit-appearance:none;-moz-appearance:none;appearance:none}::ng-deep .mat-form-field-flex>.mat-form-field-infix{padding:.35em 0!important}::ng-deep .mat-form-field-label-wrapper{top:-1.5em}::ng-deep .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label{-webkit-transform:translateY(-1.1em) scale(.75);transform:translateY(-1.1em) scale(.75);width:133.33333%}.mat-form-field-wrapper{padding:0}"]
     }),
     __param(2, Inject(MAT_DIALOG_DATA)),
     __metadata("design:paramtypes", [Router, MatDialogRef, Object, FormBuilder, HttpClient, AuthService,
@@ -1085,6 +1065,7 @@ let AuthenticationGuard = class AuthenticationGuard {
         this.dashboardService = dashboardService;
         this.init = () => __awaiter(this, void 0, void 0, function* () {
             this.dashboardService.modelSchema = yield this.dashboardService.init();
+            this.dashboardService.UISchema = yield this.dashboardService.initUiSchema();
             return true;
         });
     }

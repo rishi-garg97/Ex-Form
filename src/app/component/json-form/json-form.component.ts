@@ -12,10 +12,10 @@ import {HttpClient} from "@angular/common/http";
 export class JsonFormComponent implements OnInit {
   title = "JsonForm";
   formGroup: FormGroup;
-  schema: any = this.http.get(`url:"../../../assets/schema.json"`);
+  schema: any;
 
   constructor(private validationService: ValidationServiceService, private http: HttpClient) {
-
+    this.schema  = this.http.get("./assets/schema.json").toPromise();
   }
 
   ngOnInit() {

@@ -31,6 +31,7 @@ export class AuthenticationGuard implements CanActivate  {
 
   init = async () => {
     this.dashboardService.modelSchema = await this.dashboardService.init();
+    this.dashboardService.UISchema = await this.dashboardService.initUiSchema();
     return true;
   }
 }

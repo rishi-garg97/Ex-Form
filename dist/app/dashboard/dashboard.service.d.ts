@@ -19,4 +19,5 @@ export declare class DashboardService {
     mapsUnitToValue: (refEntitySchema: any) => any;
     uiSchema: (type: any) => {};
     init: () => Promise<Object>;
+    initUiSchema: () => Promise<Object>;
 }

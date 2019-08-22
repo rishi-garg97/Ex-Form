@@ -417,7 +417,6 @@
             this.validationService = validationService;
             this.http = http;
             this.title = "JsonForm";
-            this.schema = this.http.get("url:\"../../../assets/schema.json\"");
             this.login = function () {
                 console.log(_this.formGroup.value);
             };
@@ -427,6 +426,7 @@
             this.enable = function (field) {
                 _this.validationService.enableUnit(field, _this.formGroup);
             };
+            this.schema = this.http.get("./assets/schema.json").toPromise();
         }
         JsonFormComponent.prototype.ngOnInit = function () {
             this.formGroup = this.validationService.buildForm();
@@ -885,7 +885,6 @@
         function DashboardService(http) {
             var _this = this;
             this.http = http;
-            this.UISchema = this.http.get("url: \"../../assets/ui-schema.json\"");
             // formSchema: any;
             this.schemaUrl = "assets/schema.json";
             this.schema = {
@@ -898,28 +897,6 @@
                     editor: {}
                 }
             };
-            // getSchemaByHttp() {
-            //   return this.http.get(this.configUrl);
-            // }
-            //   formModelSchema = (name) => {
-            //
-            //   const schema = {...this.modelSchema};
-            //   const  entitySchema =  _.find(schema, (formSchema) => {
-            //     if (formSchema.name === name) {
-            //       return formSchema;
-            //     }
-            //   });
-            //   if ( entitySchema.steps && entitySchema.steps !== null) {
-            //     entitySchema.steps.forEach((step) => {
-            //       step.refs = [...entitySchema.refs];
-            //       step = this.mapsUnitToValue(step);
-            //     });
-            //   } else {
-            //     entitySchema.properties =  this.mapsUnitToValue(entitySchema);
-            //   }
-            //   this.schema.model.form = {...entitySchema};
-            //   return this.schema.model.form;
-            // }
             this.enitityModelSchema = function (name) {
                 var schema = __assign({}, _this.modelSchema);
                 var entitySchema = _.find(schema, function (formSchema) {
@@ -970,6 +947,11 @@
             this.init = function () { return __awaiter(_this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
                     return [2 /*return*/, this.http.get(this.schemaUrl).toPromise()];
+                });
+            }); };
+            this.initUiSchema = function () { return __awaiter(_this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    return [2 /*return*/, this.http.get("./assets/ui-schema.json").toPromise()];
                 });
             }); };
         }
@@ -1274,7 +1256,7 @@
             core.Component({
                 selector: "app-signup",
                 template: "<div class=\"main\">\n  <h2 mat-dialog-title>Sign Up</h2>\n  <mat-dialog-content>\n    <form [formGroup]=\"formGroup\" class=\"ex-form\">\n      <div>\n        <ng-container *ngFor=\"let property of schema.properties;let i=index;\">\n          <!--Form field for text input  -->\n          <div class=\"form-group\" *ngIf=\"property.dataType=='String'\">\n            <app-text-field [property]=\"property\"\n                            (addControl)= \"addControl($event)\" >\n            </app-text-field>\n          </div>\n\n          <!--Form field for number input  -->\n          <div class=\"form-group\" *ngIf=\"property.dataType=='Number'\" style=\"margin-bottom:0;\">\n\n            <app-number-field [property]=\"property\"\n                              (addControl)= \"addControl($event)\" >\n            </app-number-field>\n          </div>\n\n          <div class=\"form-group\" *ngIf=\"property.dataType=='Email'\" style=\"margin-bottom:0;\">\n\n            <app-email-field  [property]=\"property\"\n                              (addControl)= \"addControl($event)\" >\n            </app-email-field>\n          </div>\n\n          <div class=\"form-group\" *ngIf=\"property.dataType=='Password'\" style=\"margin-bottom:0;\">\n\n            <app-password-field  [property]=\"property\"\n                                 (addControl)= \"addControl($event)\" >\n            </app-password-field>\n          </div>\n\n        </ng-container>\n      </div>\n\n    </form>\n  </mat-dialog-content>\n  <mat-dialog-actions>\n    <button mat-button (click)=\"signup()\" [disabled]=\"!formGroup.valid\" color=\"primary\">Sign Up</button>\n    <button mat-button (click)=\"cancel()\" color=\"primary\">Cancel</button>\n\n  </mat-dialog-actions>\n\n</div>\n",
-                styles: [".asterik{color:red}.main{width:450px}.form-group{padding:0;margin-bottom:3px}.mat-form-field{-webkit-appearance:none;-moz-appearance:none;appearance:none}::ng-deep .mat-form-field-flex>.mat-form-field-infix{padding:.35em 0!important}::ng-deep .mat-form-field-label-wrapper{top:-1.5em}::ng-deep .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label{-webkit-transform:translateY(-1.1em) scale(.75);transform:translateY(-1.1em) scale(.75);width:133.33333%}.mat-form-field-wrapper{padding:0}"]
+                styles: [".asterik{color:red}.main{width:450px;height:auto}.form-group{padding:0;margin-bottom:3px}.mat-form-field{-webkit-appearance:none;-moz-appearance:none;appearance:none}::ng-deep .mat-form-field-flex>.mat-form-field-infix{padding:.35em 0!important}::ng-deep .mat-form-field-label-wrapper{top:-1.5em}::ng-deep .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label{-webkit-transform:translateY(-1.1em) scale(.75);transform:translateY(-1.1em) scale(.75);width:133.33333%}.mat-form-field-wrapper{padding:0}"]
             }),
             __param(2, core.Inject(material.MAT_DIALOG_DATA)),
             __metadata("design:paramtypes", [router.Router, material.MatDialogRef, Object, forms.FormBuilder, http.HttpClient, AuthService,
@@ -1382,14 +1364,18 @@
             this.dialog = dialog;
             this.dashboardService = dashboardService;
             this.init = function () { return __awaiter(_this, void 0, void 0, function () {
-                var _a;
-                return __generator(this, function (_b) {
-                    switch (_b.label) {
+                var _a, _b;
+                return __generator(this, function (_c) {
+                    switch (_c.label) {
                         case 0:
                             _a = this.dashboardService;
                             return [4 /*yield*/, this.dashboardService.init()];
                         case 1:
-                            _a.modelSchema = _b.sent();
+                            _a.modelSchema = _c.sent();
+                            _b = this.dashboardService;
+                            return [4 /*yield*/, this.dashboardService.initUiSchema()];
+                        case 2:
+                            _b.UISchema = _c.sent();
                             return [2 /*return*/, true];
                     }
                 });

@@ -8,7 +8,7 @@ import { HttpClient } from "@angular/common/http";
 })
 export class DashboardService {
 
-  UISchema: any = this.http.get(`url: "../../assets/ui-schema.json"`);
+  UISchema: any; // it is initialized in auth service.
 
   constructor(private http: HttpClient) { }
   modelSchema: any;  // it is initialized in auth service.
@@ -24,29 +24,6 @@ export class DashboardService {
       editor: {}
     }
   }
-  // getSchemaByHttp() {
-  //   return this.http.get(this.configUrl);
-  // }
-
-//   formModelSchema = (name) => {
-//
-//   const schema = {...this.modelSchema};
-//   const  entitySchema =  _.find(schema, (formSchema) => {
-//     if (formSchema.name === name) {
-//       return formSchema;
-//     }
-//   });
-//   if ( entitySchema.steps && entitySchema.steps !== null) {
-//     entitySchema.steps.forEach((step) => {
-//       step.refs = [...entitySchema.refs];
-//       step = this.mapsUnitToValue(step);
-//     });
-//   } else {
-//     entitySchema.properties =  this.mapsUnitToValue(entitySchema);
-//   }
-//   this.schema.model.form = {...entitySchema};
-//   return this.schema.model.form;
-// }
 
   enitityModelSchema = (name) => {
     const schema = {...this.modelSchema};
@@ -103,5 +80,9 @@ export class DashboardService {
 
   init = async () => {
     return this.http.get(this.schemaUrl).toPromise();
+  }
+
+  initUiSchema = async () => {
+    return this.http.get("./assets/ui-schema.json").toPromise();
   }
 }
