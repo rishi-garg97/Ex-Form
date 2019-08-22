@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import {  FormGroup } from "@angular/forms";
 import {ValidationServiceService} from "./validation-service.service";
-import schema from "../../../assets/schema.json";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: "app-json-form",
@@ -9,12 +9,12 @@ import schema from "../../../assets/schema.json";
   styleUrls: ["./json-form.component.css"],
 })
 
-export class JsonFormComponent implements OnInit{
+export class JsonFormComponent implements OnInit {
   title = "JsonForm";
   formGroup: FormGroup;
-  schema: any = schema;
+  schema: any = this.http.get(`url:"../../../assets/schema.json"`);
 
-  constructor(private validationService: ValidationServiceService) {
+  constructor(private validationService: ValidationServiceService, private http: HttpClient) {
 
   }
 

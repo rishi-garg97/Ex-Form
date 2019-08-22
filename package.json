@@ -1,13 +1,14 @@
 {
-  "name": "angulr-json-form",
-  "version": "0.0.1",
+  "name": "angular-json-form",
+  "version": "0.0.2",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "packagr": "ng-packagr -p ng-package.json"
   },
   "private": false,
   "dependencies": {
@@ -53,13 +54,14 @@
     "karma-coverage-istanbul-reporter": "~2.0.1",
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.0",
+    "ng-packagr": "^5.5.0",
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
     "typescript": "~3.4.3"
   },
   "description": "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.3.",
-  "main": "karma.conf.js",
+  "main": "main.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rishi-garg97/ex-form.git"
@@ -72,5 +74,24 @@
   "bugs": {
     "url": "https://github.com/rishi-garg97/ex-form/issues"
   },
-  "homepage": "https://github.com/rishi-garg97/ex-form#readme"
+  "homepage": "https://github.com/rishi-garg97/ex-form#readme",
+  "ngPackage": {
+    "whitelistedNonPeerDependencies": [
+      "angular",
+      "ang-jsoneditor",
+      "bootstrap",
+      "firebase",
+      "lodash",
+      "hammerjs",
+      "jquery",
+      "mustache",
+      "jsoneditor",
+      "popper.js",
+      "rxjs",
+      "zone.js"
+    ]
+  },
+  "keywords": [
+    "npm"
+  ]
 }

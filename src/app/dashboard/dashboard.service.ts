@@ -1,5 +1,4 @@
 import { Injectable } from "@angular/core";
-import UISchema from "../../assets/ui-schema.json";
 import _ from "lodash";
 import { HttpClient } from "@angular/common/http";
 
@@ -8,6 +7,8 @@ import { HttpClient } from "@angular/common/http";
   providedIn: "root"
 })
 export class DashboardService {
+
+  UISchema: any = this.http.get(`url: "../../assets/ui-schema.json"`);
 
   constructor(private http: HttpClient) { }
   modelSchema: any;  // it is initialized in auth service.
@@ -93,16 +94,12 @@ export class DashboardService {
 
 
   uiSchema = (type) => {
-    const uiEditor = _.find(UISchema, {type});
+    const uiEditor = _.find(this.UISchema, {type});
     this.schema.ui.form = _.cloneDeep(uiEditor);
     this.schema.ui.editor = _.cloneDeep(uiEditor);
     return this.schema.ui.editor;
   }
 
-  // formUISchema = (type) => {
-  //   this.schema.model.form =  _.find(UISchema, {type});
-  //   return {...this.schema.model.form};
-  // }
 
   init = async () => {
     return this.http.get(this.schemaUrl).toPromise();

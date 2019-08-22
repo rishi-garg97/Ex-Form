@@ -1,11 +1,10 @@
 import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
-import {FormBuildingService} from "../../form-building.service";
 import {FormBuilder, FormGroup } from "@angular/forms";
-import {ValidationMessageGenerator} from "../../validators/validation-message-generator";
 import {RequiredValidator} from "../../validators/required-validator";
 import {MaxValueValidator} from "../../validators/max-value-validator";
 import {MinValueValidator} from "../../validators/min-value-validator";
 import {PatternValidator} from "../../validators/pattern-validator";
+import {ValidationMessageGeneratorService} from "../../validators/validation-message-generator.service";
 @Component({
   selector: "app-number-field",
   templateUrl: "./number-field.component.html",
@@ -16,7 +15,7 @@ export class NumberFieldComponent implements OnInit {
   @Input() property;
   @Output() public addControl = new EventEmitter();
 
-  constructor(private formService: FormBuildingService, private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private validationMessageGenerator: ValidationMessageGeneratorService) { }
 
   ngOnInit() {
     this.addValidator();
@@ -42,10 +41,8 @@ export class NumberFieldComponent implements OnInit {
         this.addControl.emit({key: this.property.name , value: this.formGroup});
 
   }
-
-
   getError = () => {
-    return ValidationMessageGenerator.errorMessage(this.formGroup, this.property);
+    return this.validationMessageGenerator.errorMessage(this.formGroup, this.property);
   }
 
   // fieldValueChanged = () => {

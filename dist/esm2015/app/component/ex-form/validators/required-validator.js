@@ -1,0 +1,9 @@
+import { Validators } from "@angular/forms";
+export class RequiredValidator {
+    constructor() {
+        this.get = () => {
+            return Validators.required;
+        };
+    }
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicmVxdWlyZWQtdmFsaWRhdG9yLmpzIiwic291cmNlUm9vdCI6Im5nOi8vYW5ndWxyLWpzb24tZm9ybS8iLCJzb3VyY2VzIjpbImFwcC9jb21wb25lbnQvZXgtZm9ybS92YWxpZGF0b3JzL3JlcXVpcmVkLXZhbGlkYXRvci50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFDQSxPQUFPLEVBQUMsVUFBVSxFQUFDLE1BQU0sZ0JBQWdCLENBQUM7QUFFMUMsTUFBTSxPQUFPLGlCQUFpQjtJQUU1QjtRQUdBLFFBQUcsR0FBRyxHQUFHLEVBQUU7WUFDVCxPQUFPLFVBQVUsQ0FBQyxRQUFRLENBQUM7UUFDN0IsQ0FBQyxDQUFBO0lBSkQsQ0FBQztDQUtGIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHtCYXNlVmFsaWRhdG9yc30gZnJvbSBcIi4vYmFzZS12YWxpZGF0b3JcIjtcclxuaW1wb3J0IHtWYWxpZGF0b3JzfSBmcm9tIFwiQGFuZ3VsYXIvZm9ybXNcIjtcclxuXHJcbmV4cG9ydCBjbGFzcyBSZXF1aXJlZFZhbGlkYXRvciBpbXBsZW1lbnRzIEJhc2VWYWxpZGF0b3JzIHtcclxuXHJcbiAgY29uc3RydWN0b3IoKSB7XHJcbiAgfVxyXG5cclxuICBnZXQgPSAoKSA9PiB7XHJcbiAgICByZXR1cm4gVmFsaWRhdG9ycy5yZXF1aXJlZDtcclxuICB9XHJcbn1cclxuIl19

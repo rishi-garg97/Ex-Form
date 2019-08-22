@@ -27,7 +27,7 @@ import {MatTabsModule} from "@angular/material/tabs";
 
 import {SocialLoginModule, AuthServiceConfig, FacebookLoginProvider} from "angularx-social-login";
 import {HttpClientModule} from "@angular/common/http";
-import {NgJsonEditorModule} from "ang-jsoneditor"
+import {NgJsonEditorModule} from "ang-jsoneditor";
 
 
 // firebase
@@ -47,7 +47,8 @@ import {AccordianComponent} from "./component/ex-form/viewer/group/accordian/acc
 import {TabComponent} from "./component/ex-form/viewer/group/tabs/tab/tab.component";
 import {UiSchemaComponent} from "./json-editor/ui-schema/ui-schema.component";
 import {ModelSchemaComponent} from "./json-editor/model-schema/model-schema.component";
-import { RadioComponent } from './component/ex-form/form-field/radio/radio.component';
+import { RadioComponent } from "./component/ex-form/form-field/radio/radio.component";
+import {ValidationMessageGeneratorService} from "./component/ex-form/validators/validation-message-generator.service";
 
 @NgModule({
   declarations: [
@@ -99,6 +100,7 @@ import { RadioComponent } from './component/ex-form/form-field/radio/radio.compo
   ],
 
   providers: [ValidationServiceService,
+    ValidationMessageGeneratorService,
     AuthService,
     CommonService
   ],

@@ -12,7 +12,7 @@ import {SignupComponent} from "../signup/signup.component";
   styleUrls: ["./login.component.css"]
 })
 export class LoginComponent implements OnInit {
-  private formGroup: FormGroup;
+  formGroup: FormGroup;
 
   constructor(private router: Router, public dialogRef: MatDialogRef<LoginComponent>, @Inject(MAT_DIALOG_DATA)public data: any,
               private formBuilder: FormBuilder, public authService: AuthService, private commonService: CommonService,

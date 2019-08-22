@@ -11,7 +11,8 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.commonService.loadSignUpJson();
+    this.commonService.getValidationErrorMesageJson();
   }
 
 

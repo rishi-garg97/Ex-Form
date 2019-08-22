@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
-import schema from "../../../assets/schema.json";
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { FormBuilder } from "@angular/forms";
 import { Validators } from "@angular/forms";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: "root"
@@ -9,9 +9,9 @@ import { Validators } from "@angular/forms";
 
 export class ValidationServiceService {
 
-  schema: any = schema;
+  schema: any = this.http.get(`url: "get ../../../assets/schema.json"`);
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private http: HttpClient) { }
 
 
           getErrorMessage(control) {

@@ -2,11 +2,10 @@ import {Component, Inject, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
 import {FormBuilder, FormGroup} from "@angular/forms";
-import {FormBuildingService} from "../../component/ex-form/form-building.service";
-import signup from "../../../assets/signup.json";
 import {AuthService} from "../services/auth.service";
 import {CommonService} from "../../service/common.service";
 import {SnackBarMessageService} from "../../service/snack-bar-message.service";
+import {HttpClient} from "@angular/common/http";
 @Component({
   selector: "app-signup",
   templateUrl: "./signup.component.html",
@@ -14,15 +13,17 @@ import {SnackBarMessageService} from "../../service/snack-bar-message.service";
 })
 export class SignupComponent implements OnInit {
   formGroup: FormGroup = this.formBuilder.group({});
-  private schema: any =  signup;
+  schema: any = this.commonService.signUpJson;
 
   constructor(private router: Router, public dialogRef: MatDialogRef<SignupComponent>, @Inject(MAT_DIALOG_DATA)public data: any,
-              private formBuilder: FormBuilder, private formBuildingService: FormBuildingService, public authService: AuthService,
+              private formBuilder: FormBuilder, private http: HttpClient, public authService: AuthService,
               private commonService: CommonService, private snackBarMessageService: SnackBarMessageService ) {
   }
 
   ngOnInit() {
   }
+
+
   signup = async () => {
 
     this.commonService.showHideSpinner(true);

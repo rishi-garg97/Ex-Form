@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import {HttpClient} from "@angular/common/http";
 declare const jQuery: any;
 
 @Injectable({
@@ -6,9 +7,10 @@ declare const jQuery: any;
 })
 export class CommonService {
 
-  isSpinnerVisible = true;
+  signUpJson: any;
+  errorMessageJson: any;
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   showHideSpinner = (show) => {
     // this.isSpinnerVisible = show;
@@ -23,6 +25,11 @@ export class CommonService {
     }
   }
 
+  loadSignUpJson = async () => {
+    this.signUpJson = await this.http.get("./assets/signup.json").toPromise();
+  }
 
-
+  getValidationErrorMesageJson = async () => {
+    this.errorMessageJson = await this.http.get("./assets/validation-message.json").toPromise();
+  }
 }

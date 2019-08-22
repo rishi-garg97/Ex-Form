@@ -12,7 +12,7 @@ import {AuthService} from "../../entryComponent/services/auth.service";
 })
 export class ToolBarComponent implements OnInit {
 
-  constructor(private dialog: MatDialog, private authService: AuthService) { }
+  constructor(private dialog: MatDialog, public authService: AuthService) { }
 
   ngOnInit() {
   }
