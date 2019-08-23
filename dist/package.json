@@ -1,6 +1,6 @@
 {
-  "name": "angular-json-form",
-  "version": "0.0.2",
+  "name": "angulr-json-form",
+  "version": "0.0.3",
   "private": false,
   "dependencies": {
     "@angular/animations": "^8.0.2",
@@ -52,7 +52,7 @@
     "typescript": "~3.4.3"
   },
   "description": "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.3.",
-  "main": "bundles/angular-json-form.umd.js",
+  "main": "bundles/angulr-json-form.umd.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rishi-garg97/ex-form.git"
@@ -69,13 +69,13 @@
   "keywords": [
     "npm"
   ],
-  "module": "fesm5/angular-json-form.js",
-  "es2015": "fesm2015/angular-json-form.js",
-  "esm5": "esm5/angular-json-form.js",
-  "esm2015": "esm2015/angular-json-form.js",
-  "fesm5": "fesm5/angular-json-form.js",
-  "fesm2015": "fesm2015/angular-json-form.js",
-  "typings": "angular-json-form.d.ts",
-  "metadata": "angular-json-form.metadata.json",
+  "module": "fesm5/angulr-json-form.js",
+  "es2015": "fesm2015/angulr-json-form.js",
+  "esm5": "esm5/angulr-json-form.js",
+  "esm2015": "esm2015/angulr-json-form.js",
+  "fesm5": "fesm5/angulr-json-form.js",
+  "fesm2015": "fesm2015/angulr-json-form.js",
+  "typings": "angulr-json-form.d.ts",
+  "metadata": "angulr-json-form.metadata.json",
   "sideEffects": false
 }

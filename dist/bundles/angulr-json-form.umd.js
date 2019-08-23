@@ -1,7 +1,7 @@
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@angular/common/http'), require('@angular/material'), require('@angular/platform-browser/animations'), require('@angular/platform-browser'), require('@angular/common'), require('@angular/forms'), require('lodash'), require('ang-jsoneditor'), require('@angular/router'), require('firebase/app'), require('@angular/fire/auth'), require('@angular/fire/firestore'), require('@angular/fire/database'), require('@angular/material/snack-bar'), require('@angular/material/dialog'), require('@angular/material/expansion'), require('@angular/material/tabs'), require('angularx-social-login'), require('@angular/fire')) :
-    typeof define === 'function' && define.amd ? define('angular-json-form', ['exports', '@angular/core', '@angular/common/http', '@angular/material', '@angular/platform-browser/animations', '@angular/platform-browser', '@angular/common', '@angular/forms', 'lodash', 'ang-jsoneditor', '@angular/router', 'firebase/app', '@angular/fire/auth', '@angular/fire/firestore', '@angular/fire/database', '@angular/material/snack-bar', '@angular/material/dialog', '@angular/material/expansion', '@angular/material/tabs', 'angularx-social-login', '@angular/fire'], factory) :
-    (global = global || self, factory(global['angular-json-form'] = {}, global.ng.core, global.ng.common.http, global.ng.material, global.ng.platformBrowser.animations, global.ng.platformBrowser, global.ng.common, global.ng.forms, global._, global.angJsoneditor, global.ng.router, global.app, global.ng.fire.auth, global.ng.fire.firestore, global.ng.fire.database, global.ng.material['snack-bar'], global.ng.material.dialog, global.ng.material.expansion, global.ng.material.tabs, global.angularxSocialLogin, global.ng.fire));
+    typeof define === 'function' && define.amd ? define('angulr-json-form', ['exports', '@angular/core', '@angular/common/http', '@angular/material', '@angular/platform-browser/animations', '@angular/platform-browser', '@angular/common', '@angular/forms', 'lodash', 'ang-jsoneditor', '@angular/router', 'firebase/app', '@angular/fire/auth', '@angular/fire/firestore', '@angular/fire/database', '@angular/material/snack-bar', '@angular/material/dialog', '@angular/material/expansion', '@angular/material/tabs', 'angularx-social-login', '@angular/fire'], factory) :
+    (global = global || self, factory(global['angulr-json-form'] = {}, global.ng.core, global.ng.common.http, global.ng.material, global.ng.platformBrowser.animations, global.ng.platformBrowser, global.ng.common, global.ng.forms, global._, global.angJsoneditor, global.ng.router, global.app, global.ng.fire.auth, global.ng.fire.firestore, global.ng.fire.database, global.ng.material['snack-bar'], global.ng.material.dialog, global.ng.material.expansion, global.ng.material.tabs, global.angularxSocialLogin, global.ng.fire));
 }(this, function (exports, core, http, material, animations, platformBrowser, common, forms, _, angJsoneditor, router, app, auth, firestore, database, snackBar, dialog, expansion, tabs, angularxSocialLogin, fire) { 'use strict';
 
     _ = _ && _.hasOwnProperty('default') ? _['default'] : _;
@@ -482,7 +482,6 @@
         }
         FormComponent.prototype.ngOnInit = function () {
             this.initialize();
-            // console.log(this.formGroup);
         };
         FormComponent.prototype.ngOnChanges = function (changes) {
             for (var propName in changes) {
@@ -1983,4 +1982,4 @@
     Object.defineProperty(exports, '__esModule', { value: true });
 
 }));
-//# sourceMappingURL=angular-json-form.umd.js.map
+//# sourceMappingURL=angulr-json-form.umd.js.map

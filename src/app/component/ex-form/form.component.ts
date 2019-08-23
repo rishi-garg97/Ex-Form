@@ -16,7 +16,6 @@ export class FormComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.initialize();
-    // console.log(this.formGroup);
   }
 
   ngOnChanges(changes: SimpleChanges) {
