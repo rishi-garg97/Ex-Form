@@ -16,16 +16,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'JsonForm'`, () => {
+  it(`should have as title 'Angular-Json-Form'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('JsonForm');
+    expect(app.title).toEqual('Angular-Json-Form');
   });
 
   it('should render title in a h1 tag', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to JsonForm!');
+    expect(compiled.querySelector('h1').textContent).toContain('Welcome to Angular-Json-Form!');
   });
 });
