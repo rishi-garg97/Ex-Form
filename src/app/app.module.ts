@@ -25,7 +25,7 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatTabsModule} from "@angular/material/tabs";
 
-import {SocialLoginModule, AuthServiceConfig, FacebookLoginProvider} from "angularx-social-login";
+import {SocialLoginModule} from "angularx-social-login";
 import {HttpClientModule} from "@angular/common/http";
 import {NgJsonEditorModule} from "ang-jsoneditor";
 
@@ -93,12 +93,53 @@ import {ValidationMessageGeneratorService} from "./component/ex-form/validators/
     SocialLoginModule,
     HttpClientModule,
     NgJsonEditorModule
-
   ],
   entryComponents: [
     LoginComponent, SignupComponent
   ],
 
+  exports: [
+    FormsModule,
+    AngularMaterialModule,
+    ReactiveFormsModule,
+    CommonModule,
+    AppRoutingModule,
+    MatDialogModule,
+    BrowserModule,
+    // AngularFireModule.initializeApp(environment.firebaseConfig),
+    // AngularFireModule, // Only required for auth features,
+    // AngularFirestoreModule,
+    MatSnackBarModule,
+    // AngularFireDatabaseModule,
+    // AngularFireAuthModule,
+    MatExpansionModule,
+    MatTabsModule,
+    SocialLoginModule,
+    HttpClientModule,
+    NgJsonEditorModule,
+    AngularMaterialModule,
+    AppComponent,
+    JsonFormComponent,
+    FormComponent,
+    TextFieldComponent,
+    NumberFieldComponent,
+    DropdownComponent,
+    MeasureComponent,
+    DashboardComponent,
+    LoginComponent,
+    ToolBarComponent,
+    SignupComponent,
+    EmailFieldComponent,
+    PasswordFieldComponent,
+    LoadingSpinnerComponent,
+    StepFormComponent,
+    SimpleComponent,
+    AccordianComponent,
+    TabComponent,
+    UiSchemaComponent,
+    ModelSchemaComponent,
+    RadioComponent
+  ],
   providers: [ValidationServiceService,
     ValidationMessageGeneratorService,
     AuthService,

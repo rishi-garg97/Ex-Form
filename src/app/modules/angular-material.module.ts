@@ -46,4 +46,7 @@ import { BrowserModule } from "@angular/platform-browser";
      MatStepperModule
   ]
 })
-export class AngularMaterialModule { }
+export class AngularMaterialModule {
+  constructor() {
+  }
+}

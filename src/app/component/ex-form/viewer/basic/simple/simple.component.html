@@ -14,7 +14,6 @@
         <!--Form field for password input  -->
 
         <div class="form-group col-sm-6" *ngIf="property && property.dataType=='Password'">
-
           <app-password-field  [property]="property"
                                (addControl)= "addControl($event)" >
           </app-password-field>
@@ -23,7 +22,6 @@
         <!--Form field for email input  -->
 
         <div class="form-group col-sm-6" *ngIf="property && property.dataType=='Email'">
-
           <app-email-field  [property]="property"
                             (addControl)= "addControl($event)" >
           </app-email-field>

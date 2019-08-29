@@ -1,6 +1,7 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from "@angular/core";
 
 import _ from "lodash";
+import {CommonService} from "../../service/common.service";
 
 @Component({
   selector: "app-form",
@@ -12,10 +13,13 @@ export class FormComponent implements OnInit, OnChanges {
   @Input() uiSchema: any;
   modifiedUiSchema;
 
-  constructor() {  }
 
+  constructor(private commonService: CommonService) {
+
+  }
   ngOnInit() {
     this.initialize();
+
   }
 
   ngOnChanges(changes: SimpleChanges) {

@@ -36,8 +36,10 @@ export class DashboardComponent implements OnInit {
   initialize = () => {
     this.editorModelSchema = this.dashboardService.enitityModelSchema(this.selected);
     this.formModelSchema = this.dashboardService.schema.model.form;
+    // console.log("model", JSON.stringify(this.formModelSchema));
     this.editorUISchema = this.dashboardService.uiSchema(this.selectedType);
     this.formUISchema = this.dashboardService.schema.ui.form;
+    // console.log("ui", JSON.stringify(this.formUISchema));
   }
 
 

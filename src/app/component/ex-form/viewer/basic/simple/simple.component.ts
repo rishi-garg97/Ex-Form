@@ -14,6 +14,8 @@ export class SimpleComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
+
+    console.log("Modified", this.uiSchema);
   }
 
   ngOnChanges() {

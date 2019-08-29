@@ -31,5 +31,6 @@ export class CommonService {
 
   getValidationErrorMesageJson = async () => {
     this.errorMessageJson = await this.http.get("./assets/validation-message.json").toPromise();
+    console.log("Error Json", this.errorMessageJson);
   }
 }
